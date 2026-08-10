@@ -1,0 +1,216 @@
+// ============================================================
+// Exam Rescue — Class 10 Mathematics Syllabus (CBSE/NCERT)
+// ============================================================
+
+import { Chapter, Topic, Subject } from '@/types';
+
+export const mathSubject: Subject = {
+  id: 'mathematics',
+  classLevelId: 10,
+  name: 'Mathematics',
+  icon: '📐',
+  color: '#6366f1',
+};
+
+export const mathChapters: Chapter[] = [
+  {
+    id: 'math-ch1',
+    subjectId: 'mathematics',
+    chapterNumber: 1,
+    name: 'Real Numbers',
+    description: 'Euclid\'s division lemma, irrational numbers, rational numbers, decimal expansions',
+    topicCount: 4,
+  },
+  {
+    id: 'math-ch2',
+    subjectId: 'mathematics',
+    chapterNumber: 2,
+    name: 'Polynomials',
+    description: 'Polynomials, zeroes, division algorithm, factor theorem',
+    topicCount: 4,
+  },
+  {
+    id: 'math-ch3',
+    subjectId: 'mathematics',
+    chapterNumber: 3,
+    name: 'Pair of Linear Equations in Two Variables',
+    description: 'Graphical and algebraic solutions, elimination, substitution, cross-multiplication',
+    topicCount: 5,
+  },
+  {
+    id: 'math-ch4',
+    subjectId: 'mathematics',
+    chapterNumber: 4,
+    name: 'Quadratic Equations',
+    description: 'Standard form, solving by factoring, completing square, quadratic formula, nature of roots',
+    topicCount: 5,
+  },
+  {
+    id: 'math-ch5',
+    subjectId: 'mathematics',
+    chapterNumber: 5,
+    name: 'Arithmetic Progressions',
+    description: 'AP, nth term, sum of n terms, applications',
+    topicCount: 4,
+  },
+  {
+    id: 'math-ch6',
+    subjectId: 'mathematics',
+    chapterNumber: 6,
+    name: 'Triangles',
+    description: 'Similarity of triangles, Pythagoras theorem, basic proportionality theorem',
+    topicCount: 5,
+  },
+  {
+    id: 'math-ch7',
+    subjectId: 'mathematics',
+    chapterNumber: 7,
+    name: 'Coordinate Geometry',
+    description: 'Distance formula, section formula, area of triangles',
+    topicCount: 3,
+  },
+  {
+    id: 'math-ch8',
+    subjectId: 'mathematics',
+    chapterNumber: 8,
+    name: 'Introduction to Trigonometry',
+    description: 'Trigonometric ratios, trigonometric identities, complementary angles',
+    topicCount: 5,
+  },
+  {
+    id: 'math-ch9',
+    subjectId: 'mathematics',
+    chapterNumber: 9,
+    name: 'Applications of Trigonometry',
+    description: 'Heights and distances, angle of elevation, angle of depression',
+    topicCount: 3,
+  },
+  {
+    id: 'math-ch10',
+    subjectId: 'mathematics',
+    chapterNumber: 10,
+    name: 'Circles',
+    description: 'Tangent to a circle, number of tangents, tangent-radius theorem',
+    topicCount: 4,
+  },
+  {
+    id: 'math-ch11',
+    subjectId: 'mathematics',
+    chapterNumber: 11,
+    name: 'Areas Related to Circles',
+    description: 'Perimeter and area of sector, segment, combinations',
+    topicCount: 3,
+  },
+  {
+    id: 'math-ch12',
+    subjectId: 'mathematics',
+    chapterNumber: 12,
+    name: 'Surface Areas and Volumes',
+    description: 'Surface area and volume of combinations of solids, conversion of shapes',
+    topicCount: 4,
+  },
+  {
+    id: 'math-ch13',
+    subjectId: 'mathematics',
+    chapterNumber: 13,
+    name: 'Statistics',
+    description: 'Mean, median, mode of grouped data, cumulative frequency, ogives',
+    topicCount: 5,
+  },
+  {
+    id: 'math-ch14',
+    subjectId: 'mathematics',
+    chapterNumber: 14,
+    name: 'Probability',
+    description: 'Classical probability, theoretical probability, complementary events',
+    topicCount: 3,
+  },
+];
+
+export const mathTopics: Record<string, Topic[]> = {
+  'math-ch1': [
+    { id: 'math-ch1-t1', chapterId: 'math-ch1', name: 'Euclid\'s Division Lemma and Algorithm', importance: 7, difficulty: 5, estimatedMinutes: 35 },
+    { id: 'math-ch1-t2', chapterId: 'math-ch1', name: 'Fundamental Theorem of Arithmetic', importance: 7, difficulty: 5, estimatedMinutes: 30 },
+    { id: 'math-ch1-t3', chapterId: 'math-ch1', name: 'Irrational Numbers — Proofs', importance: 8, difficulty: 6, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch1-t4', chapterId: 'math-ch1', name: 'Decimal Expansions of Rational Numbers', importance: 7, difficulty: 5, estimatedMinutes: 30 },
+  ],
+  'math-ch2': [
+    { id: 'math-ch2-t1', chapterId: 'math-ch2', name: 'Zeroes of Polynomials', importance: 7, difficulty: 4, estimatedMinutes: 30 },
+    { id: 'math-ch2-t2', chapterId: 'math-ch2', name: 'Relationship Between Zeroes and Coefficients', importance: 8, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch2-t3', chapterId: 'math-ch2', name: 'Division Algorithm for Polynomials', importance: 7, difficulty: 6, estimatedMinutes: 35 },
+    { id: 'math-ch2-t4', chapterId: 'math-ch2', name: 'Factor Theorem and Its Applications', importance: 8, difficulty: 5, estimatedMinutes: 30, isHighYield: true },
+  ],
+  'math-ch3': [
+    { id: 'math-ch3-t1', chapterId: 'math-ch3', name: 'Graphical Method of Solution', importance: 7, difficulty: 4, estimatedMinutes: 30 },
+    { id: 'math-ch3-t2', chapterId: 'math-ch3', name: 'Algebraic Methods — Elimination', importance: 8, difficulty: 5, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch3-t3', chapterId: 'math-ch3', name: 'Algebraic Methods — Substitution', importance: 7, difficulty: 4, estimatedMinutes: 30 },
+    { id: 'math-ch3-t4', chapterId: 'math-ch3', name: 'Cross-Multiplication Method', importance: 8, difficulty: 6, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch3-t5', chapterId: 'math-ch3', name: 'Equations Reducible to Linear Form', importance: 7, difficulty: 6, estimatedMinutes: 35 },
+  ],
+  'math-ch4': [
+    { id: 'math-ch4-t1', chapterId: 'math-ch4', name: 'Standard Form and Solving by Factoring', importance: 8, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch4-t2', chapterId: 'math-ch4', name: 'Completing the Square', importance: 8, difficulty: 6, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch4-t3', chapterId: 'math-ch4', name: 'Quadratic Formula', importance: 9, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch4-t4', chapterId: 'math-ch4', name: 'Nature of Roots (Discriminant)', importance: 9, difficulty: 6, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch4-t5', chapterId: 'math-ch4', name: 'Word Problems on Quadratic Equations', importance: 8, difficulty: 7, estimatedMinutes: 50 },
+  ],
+  'math-ch5': [
+    { id: 'math-ch5-t1', chapterId: 'math-ch5', name: 'Arithmetic Progression — Basic Concepts', importance: 7, difficulty: 4, estimatedMinutes: 30 },
+    { id: 'math-ch5-t2', chapterId: 'math-ch5', name: 'nth Term of an AP', importance: 8, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch5-t3', chapterId: 'math-ch5', name: 'Sum of n Terms of an AP', importance: 9, difficulty: 6, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch5-t4', chapterId: 'math-ch5', name: 'Word Problems on AP', importance: 7, difficulty: 6, estimatedMinutes: 35 },
+  ],
+  'math-ch6': [
+    { id: 'math-ch6-t1', chapterId: 'math-ch6', name: 'Similarity of Triangles — Criteria', importance: 8, difficulty: 5, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch6-t2', chapterId: 'math-ch6', name: 'Basic Proportionality Theorem (Thales)', importance: 9, difficulty: 6, estimatedMinutes: 45, isHighYield: true },
+    { id: 'math-ch6-t3', chapterId: 'math-ch6', name: 'Areas of Similar Triangles', importance: 7, difficulty: 5, estimatedMinutes: 35 },
+    { id: 'math-ch6-t4', chapterId: 'math-ch6', name: 'Pythagoras Theorem and Applications', importance: 9, difficulty: 5, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch6-t5', chapterId: 'math-ch6', name: 'Converse of Pythagoras Theorem', importance: 7, difficulty: 5, estimatedMinutes: 30 },
+  ],
+  'math-ch7': [
+    { id: 'math-ch7-t1', chapterId: 'math-ch7', name: 'Distance Formula', importance: 8, difficulty: 5, estimatedMinutes: 30, isHighYield: true },
+    { id: 'math-ch7-t2', chapterId: 'math-ch7', name: 'Section Formula', importance: 8, difficulty: 6, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch7-t3', chapterId: 'math-ch7', name: 'Area of a Triangle (Coordinate Geometry)', importance: 7, difficulty: 5, estimatedMinutes: 30 },
+  ],
+  'math-ch8': [
+    { id: 'math-ch8-t1', chapterId: 'math-ch8', name: 'Trigonometric Ratios', importance: 9, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch8-t2', chapterId: 'math-ch8', name: 'Trigonometric Ratios of Specific Angles', importance: 9, difficulty: 5, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch8-t3', chapterId: 'math-ch8', name: 'Trigonometric Identities', importance: 9, difficulty: 7, estimatedMinutes: 50, isHighYield: true },
+    { id: 'math-ch8-t4', chapterId: 'math-ch8', name: 'Complementary Angles', importance: 7, difficulty: 4, estimatedMinutes: 25 },
+    { id: 'math-ch8-t5', chapterId: 'math-ch8', name: 'Heights and Distances — Intro', importance: 7, difficulty: 5, estimatedMinutes: 35 },
+  ],
+  'math-ch9': [
+    { id: 'math-ch9-t1', chapterId: 'math-ch9', name: 'Angle of Elevation and Depression', importance: 8, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch9-t2', chapterId: 'math-ch9', name: 'Heights and Distances — Problems', importance: 8, difficulty: 6, estimatedMinutes: 45, isHighYield: true },
+    { id: 'math-ch9-t3', chapterId: 'math-ch9', name: 'Applications Using Trigonometry', importance: 7, difficulty: 6, estimatedMinutes: 40 },
+  ],
+  'math-ch10': [
+    { id: 'math-ch10-t1', chapterId: 'math-ch10', name: 'Tangent to a Circle', importance: 8, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch10-t2', chapterId: 'math-ch10', name: 'Number of Tangents from a Point', importance: 7, difficulty: 5, estimatedMinutes: 30 },
+    { id: 'math-ch10-t3', chapterId: 'math-ch10', name: 'Tangent-Radius Theorem', importance: 8, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch10-t4', chapterId: 'math-ch10', name: 'Length of Tangent and Related Problems', importance: 7, difficulty: 6, estimatedMinutes: 35 },
+  ],
+  'math-ch11': [
+    { id: 'math-ch11-t1', chapterId: 'math-ch11', name: 'Perimeter and Area of Circle', importance: 7, difficulty: 4, estimatedMinutes: 25 },
+    { id: 'math-ch11-t2', chapterId: 'math-ch11', name: 'Area of Sector and Segment', importance: 8, difficulty: 6, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch11-t3', chapterId: 'math-ch11', name: 'Areas of Combinations of Figures', importance: 7, difficulty: 6, estimatedMinutes: 40 },
+  ],
+  'math-ch12': [
+    { id: 'math-ch12-t1', chapterId: 'math-ch12', name: 'Surface Area — Cuboid, Cylinder, Cone, Sphere', importance: 8, difficulty: 5, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch12-t2', chapterId: 'math-ch12', name: 'Volume — Cuboid, Cylinder, Cone, Sphere', importance: 8, difficulty: 5, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch12-t3', chapterId: 'math-ch12', name: 'Combinations of Solids', importance: 7, difficulty: 6, estimatedMinutes: 40 },
+    { id: 'math-ch12-t4', chapterId: 'math-ch12', name: 'Conversion of Solids', importance: 6, difficulty: 5, estimatedMinutes: 35 },
+  ],
+  'math-ch13': [
+    { id: 'math-ch13-t1', chapterId: 'math-ch13', name: 'Mean of Grouped Data', importance: 8, difficulty: 5, estimatedMinutes: 35, isHighYield: true },
+    { id: 'math-ch13-t2', chapterId: 'math-ch13', name: 'Mode of Grouped Data', importance: 7, difficulty: 5, estimatedMinutes: 30 },
+    { id: 'math-ch13-t3', chapterId: 'math-ch13', name: 'Median of Grouped Data', importance: 8, difficulty: 6, estimatedMinutes: 40, isHighYield: true },
+    { id: 'math-ch13-t4', chapterId: 'math-ch13', name: 'Ogive (Cumulative Frequency Curve)', importance: 6, difficulty: 5, estimatedMinutes: 30 },
+    { id: 'math-ch13-t5', chapterId: 'math-ch13', name: 'Relation Between Mean, Median, Mode', importance: 7, difficulty: 5, estimatedMinutes: 25 },
+  ],
+  'math-ch14': [
+    { id: 'math-ch14-t1', chapterId: 'math-ch14', name: 'Classical Definition of Probability', importance: 8, difficulty: 4, estimatedMinutes: 30, isHighYield: true },
+    { id: 'math-ch14-t2', chapterId: 'math-ch14', name: 'Probability — Complementary Events', importance: 7, difficulty: 4, estimatedMinutes: 25 },
+    { id: 'math-ch14-t3', chapterId: 'math-ch14', name: 'Probability Problems (Deck of Cards, Dice)', importance: 7, difficulty: 5, estimatedMinutes: 35 },
+  ],
+};
