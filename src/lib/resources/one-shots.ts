@@ -1,8 +1,8 @@
-// YouTube one-shot video mappings for Class 10 chapters
-// Science: Prashant Kirad (ExpHub)
-// Social Science: Digraj Singh Rajput (full chapter explanations)
-// Maths: Shobhit Nirwan
-// English: Educational Bhaiya
+// YouTube one-shot video mappings for all classes (9, 10, 11, 12)
+// Class 10 Science: Prashant Kirad (ExpHub), Math: Shobhit Nirwan, SST: Digraj, English: Educational Bhaiya
+// Class 9: Prashant Kirad (ExpHub 9th), Shobhit Nirwan (9th), Digraj, Dear Sir
+// Class 11: Prashant Kirad (11th/12th), PW
+// Class 12: NCERT Wallah
 
 export interface OneShotVideo {
   channel: string;
@@ -99,7 +99,80 @@ const englishOneShots: Record<string, OneShotVideo> = {
   'eng-ww-ch1': { channel: 'Educational Bhaiya', videoId: '1CY8E_8nuXY', title: 'Footprints without Feet' },
 };
 
-export function getOneShotVideo(subjectId: string, chapterId: string): OneShotVideo | null {
+// Class 9/11/12 one-shot placeholders (to be populated with real video IDs)
+const class9ScienceOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 15 }, (_, i) => [`sci-ch${i + 1}`, { channel: 'Prashant Kirad', videoId: '', title: `Class 9 Science Chapter ${i + 1}` }])
+);
+const class9MathOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 15 }, (_, i) => [`math-ch${i + 1}`, { channel: 'Shobhit Nirwan', videoId: '', title: `Class 9 Math Chapter ${i + 1}` }])
+);
+const class9SstOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 16 }, (_, i) => [`ss-ch${i + 1}`, { channel: 'Digraj Singh Rajput', videoId: '', title: `Class 9 SST Chapter ${i + 1}` }])
+);
+const class9EnglishOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 19 }, (_, i) => [`eng-ch${i + 1}`, { channel: 'Dear Sir', videoId: '', title: `Class 9 English Chapter ${i + 1}` }])
+);
+
+const class11PhysicsOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 15 }, (_, i) => [`phy-ch${i + 1}`, { channel: 'Prashant Kirad', videoId: '', title: `Class 11 Physics Chapter ${i + 1}` }])
+);
+const class11ChemistryOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 14 }, (_, i) => [`chem-ch${i + 1}`, { channel: 'Prashant Kirad', videoId: '', title: `Class 11 Chemistry Chapter ${i + 1}` }])
+);
+const class11MathsOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 16 }, (_, i) => [`math-ch${i + 1}`, { channel: 'PW', videoId: '', title: `Class 11 Maths Chapter ${i + 1}` }])
+);
+const class11BiologyOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 15 }, (_, i) => [`bio-ch${i + 1}`, { channel: 'PW', videoId: '', title: `Class 11 Biology Chapter ${i + 1}` }])
+);
+
+const class12PhysicsOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 14 }, (_, i) => [`phy-ch${i + 1}`, { channel: 'NCERT Wallah', videoId: '', title: `Class 12 Physics Chapter ${i + 1}` }])
+);
+const class12ChemistryOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 14 }, (_, i) => [`chem-ch${i + 1}`, { channel: 'NCERT Wallah', videoId: '', title: `Class 12 Chemistry Chapter ${i + 1}` }])
+);
+const class12MathsOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 13 }, (_, i) => [`math-ch${i + 1}`, { channel: 'NCERT Wallah', videoId: '', title: `Class 12 Maths Chapter ${i + 1}` }])
+);
+const class12BiologyOneShots: Record<string, OneShotVideo> = Object.fromEntries(
+  Array.from({ length: 16 }, (_, i) => [`bio-ch${i + 1}`, { channel: 'NCERT Wallah', videoId: '', title: `Class 12 Biology Chapter ${i + 1}` }])
+);
+
+export function getOneShotVideo(subjectId: string, chapterId: string, classLevelId?: number): OneShotVideo | null {
+  const classId = classLevelId || 10;
+  
+  if (classId === 9) {
+    switch (subjectId) {
+      case 'science': return class9ScienceOneShots[chapterId] || null;
+      case 'mathematics': return class9MathOneShots[chapterId] || null;
+      case 'social_science': return class9SstOneShots[chapterId] || null;
+      case 'english': return class9EnglishOneShots[chapterId] || null;
+      default: return null;
+    }
+  }
+  
+  if (classId === 11) {
+    switch (subjectId) {
+      case 'physics': return class11PhysicsOneShots[chapterId] || null;
+      case 'chemistry': return class11ChemistryOneShots[chapterId] || null;
+      case 'mathematics': return class11MathsOneShots[chapterId] || null;
+      case 'biology': return class11BiologyOneShots[chapterId] || null;
+      default: return null;
+    }
+  }
+  
+  if (classId === 12) {
+    switch (subjectId) {
+      case 'physics': return class12PhysicsOneShots[chapterId] || null;
+      case 'chemistry': return class12ChemistryOneShots[chapterId] || null;
+      case 'mathematics': return class12MathsOneShots[chapterId] || null;
+      case 'biology': return class12BiologyOneShots[chapterId] || null;
+      default: return null;
+    }
+  }
+  
+  // Default: Class 10 (backward compatible)
   switch (subjectId) {
     case 'science': return scienceOneShots[chapterId] || null;
     case 'mathematics': return mathOneShots[chapterId] || null;
