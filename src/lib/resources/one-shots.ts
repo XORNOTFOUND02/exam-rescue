@@ -102,8 +102,8 @@ const englishOneShots: Record<string, OneShotVideo> = {
 // Class 9/11/12 one-shot maps (placeholder videoIds — '' until verified)
 // Keys match chapter ids in src/lib/syllabus/class9-*.ts, class11-*.ts, class12-*.ts
 const class9ScienceOneShots: Record<string, OneShotVideo> = {
-  'sci-ch1': { channel: 'PW Foundation', videoId: 'vawU6R8MaO0', title: 'Matter in Our Surroundings' },
-  'sci-ch2': { channel: 'PW Foundation', videoId: 'vawU6R8MaO0', title: 'Is Matter Around Us Pure' },
+  'sci-ch1': { channel: 'Prashant Kirad', videoId: 'bmzDsWMSCTk', title: 'Matter in Our Surroundings' },
+  'sci-ch2': { channel: 'Prashant Kirad', videoId: 'KUqLOHFNTgk', title: 'Is Matter Around Us Pure' },
   'sci-ch3': { channel: 'PW Foundation', videoId: 'GGNN3cl57DQ', title: 'Atoms and Molecules' },
   'sci-ch4': { channel: 'PW Foundation', videoId: 'GGNN3cl57DQ', title: 'Structure of the Atom' },
   'sci-ch5': { channel: 'PW Foundation', videoId: 'GGNN3cl57DQ', title: 'The Fundamental Unit of Life' },
@@ -161,7 +161,7 @@ const class9SstOneShots: Record<string, OneShotVideo> = {
 
 const class9EnglishOneShots: Record<string, OneShotVideo> = {
   // Beehive Prose (eng-bh-ch*)
-  'eng-bh-ch1': { channel: 'Dear Sir', videoId: '0VAkuxxCvnI', title: 'The Fun They Had' },
+  'eng-bh-ch1': { channel: 'Dear Sir', videoId: 'utIFfatMqLk', title: 'The Fun They Had' },
   'eng-bh-ch2': { channel: 'Dear Sir', videoId: '0VAkuxxCvnI', title: 'The Sound of Music' },
   'eng-bh-ch3': { channel: 'Dear Sir', videoId: '0VAkuxxCvnI', title: 'The Little Girl' },
   'eng-bh-ch4': { channel: 'Dear Sir', videoId: '0VAkuxxCvnI', title: 'A Truly Beautiful Mind' },
