@@ -224,21 +224,45 @@ export default function DashboardPage() {
         <WhatNowButton />
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
           <Link href="/plan" className="card text-center py-5 hover:shadow-md transition-all group">
             <BookOpen className="w-6 h-6 text-indigo-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-sm font-bold text-gray-900">My Plan</div>
           </Link>
-          <Link href="/practice" className="card text-center py-5 hover:shadow-md transition-all group">
+          <Link href="/pomodoro" className="card text-center py-5 hover:shadow-md transition-all group">
+            <Clock className="w-6 h-6 text-red-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <div className="text-sm font-bold text-gray-900">Timer</div>
+          </Link>
+          <Link href="/pyq" className="card text-center py-5 hover:shadow-md transition-all group">
+            <TrendingUp className="w-6 h-6 text-orange-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <div className="text-sm font-bold text-gray-900">PYQ</div>
+          </Link>
+          <Link href="/gamification" className="card text-center py-5 hover:shadow-md transition-all group">
+            <Zap className="w-6 h-6 text-yellow-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <div className="text-sm font-bold text-gray-900">XP</div>
+          </Link>
+          <Link href="/flashcards" className="card text-center py-5 hover:shadow-md transition-all group">
+            <Sparkles className="w-6 h-6 text-cyan-500 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <div className="text-sm font-bold text-gray-900">Cards</div>
+          </Link>
+          <Link href="/mocktest" className="card text-center py-5 hover:shadow-md transition-all group">
             <Target className="w-6 h-6 text-emerald-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <div className="text-sm font-bold text-gray-900">Mock Test</div>
+          </Link>
+          <Link href="/formulas" className="card text-center py-5 hover:shadow-md transition-all group">
+            <Brain className="w-6 h-6 text-purple-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <div className="text-sm font-bold text-gray-900">Formulas</div>
+          </Link>
+          <Link href="/practice" className="card text-center py-5 hover:shadow-md transition-all group">
+            <CheckCircle2 className="w-6 h-6 text-blue-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-sm font-bold text-gray-900">Practice</div>
           </Link>
           <Link href="/progress" className="card text-center py-5 hover:shadow-md transition-all group">
-            <TrendingUp className="w-6 h-6 text-amber-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <AlertTriangle className="w-6 h-6 text-amber-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-sm font-bold text-gray-900">Progress</div>
           </Link>
           <Link href="/resources" className="card text-center py-5 hover:shadow-md transition-all group">
-            <Brain className="w-6 h-6 text-purple-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+            <MessageCircle className="w-6 h-6 text-pink-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
             <div className="text-sm font-bold text-gray-900">Resources</div>
           </Link>
         </div>
