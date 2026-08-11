@@ -62,7 +62,7 @@ const sstOneShots: Record<string, OneShotVideo> = {
   // Political Science (ss-ps-ch*)
   'ss-ps-ch1': { channel: 'Digraj Singh Rajput', videoId: '1HxLCF3sDzA', title: 'Power Sharing' },
   'ss-ps-ch2': { channel: 'Digraj Singh Rajput', videoId: 'I0ZmY77j0gg', title: 'Federalism' },
-  'ss-ps-ch3': { channel: 'Digraj Singh Rajput', videoId: 'O4GfrcwDF24', title: 'Democracy and Diversity' },
+  'ss-ps-ch3': { channel: 'Magnet Brains', videoId: 'O4GfrcwDF24', title: 'Democracy and Diversity' }, // Full chapter 1:11:52 - Digraj doesn't have this chapter
   'ss-ps-ch4': { channel: 'Digraj Singh Rajput', videoId: 'Jy2rireNJBs', title: 'Gender, Religion and Caste' },
   'ss-ps-ch5': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Political Parties' },
   'ss-ps-ch6': { channel: 'Digraj Singh Rajput', videoId: 'JVBWKBYsvH4', title: 'Outcomes of Democracy' },
@@ -70,7 +70,7 @@ const sstOneShots: Record<string, OneShotVideo> = {
   'ss-eco-ch1': { channel: 'Digraj Singh Rajput', videoId: 'L-FGyJY0Thk', title: 'Development' },
   'ss-eco-ch2': { channel: 'Digraj Singh Rajput', videoId: 'Kll5_iIJj2g', title: 'Sectors of the Indian Economy' },
   'ss-eco-ch3': { channel: 'Digraj Singh Rajput', videoId: 'V6LPuBEXCfE', title: 'Money and Credit' },
-  'ss-eco-ch4': { channel: 'Digraj Singh Rajput', videoId: 'PK2YonJyUeg', title: 'Globalisation and the Indian Economy' },
+  'ss-eco-ch4': { channel: 'Digraj Singh Rajput', videoId: '8kiUJ65f8iQ', title: 'Globalisation and the Indian Economy' },
   'ss-eco-ch5': { channel: 'Digraj Singh Rajput', videoId: 'gtFjdcVcvys', title: 'Consumer Rights' },
 };
 
