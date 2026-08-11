@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import {
   Calendar, Clock, BookOpen, Target, Zap, ArrowRight,
-  CheckCircle2, AlertTriangle, TrendingUp, Brain, ChevronRight
+  CheckCircle2, AlertTriangle, TrendingUp, Brain, ChevronRight, MessageCircle, Sparkles
 } from "lucide-react";
 import { useStore } from "@/store/useStore";
 import { getChapterById, getAllTopicsForSubject } from "@/lib/syllabus";
@@ -14,33 +14,29 @@ import WhatNowButton from "@/components/dashboard/WhatNowButton";
 import MarksPerHour from "@/components/dashboard/MarksPerHour";
 import MissedDayButton from "@/components/dashboard/MissedDayButton";
 import PriorityBadge from "@/components/shared/PriorityBadge";
+import StreakCounter from "@/components/dashboard/StreakCounter";
+import ExamCountdown from "@/components/dashboard/ExamCountdown";
+import ConfidenceHeatmap from "@/components/dashboard/ConfidenceHeatmap";
+import AIQuizGenerator from "@/components/ai/AIQuizGenerator";
+import PlanOptimizer from "@/components/ai/PlanOptimizer";
 
 export default function DashboardPage() {
   const { currentPlan, onboarding, markSessionComplete } = useStore();
 
-  // Compute derived values BEFORE any early return (react-hooks/rules-of-hooks).
   const today = useMemo(() => new Date().toISOString().split("T")[0], []);
   const daysRemaining = useMemo(() => {
     if (!onboarding.examDate) return 0;
     const examTime = new Date(onboarding.examDate).getTime();
-    // Use today string (already computed) to avoid Date.now() in render
     const nowTime = new Date(today + "T12:00:00").getTime();
     return Math.max(0, Math.ceil((examTime - nowTime) / (1000 * 60 * 60 * 24)));
   }, [onboarding.examDate, today]);
 
-  // topicId -> priority level, for labeling sessions in today's plan
   const priorityMap = useMemo<Record<string, PriorityLevel>>(() => {
     if (!onboarding.selectedSubject) return {};
     const allTopics = getAllTopicsForSubject(onboarding.selectedSubject);
     if (allTopics.length === 0) return {};
     const totalMinutes = daysRemaining * (onboarding.dailyHours || 3) * 60;
-    const ranked = rankTopicsByPriority(
-      allTopics,
-      onboarding.chapterStatuses,
-      onboarding.topicStatuses,
-      daysRemaining,
-      totalMinutes
-    );
+    const ranked = rankTopicsByPriority(allTopics, onboarding.chapterStatuses, onboarding.topicStatuses, daysRemaining, totalMinutes);
     const map: Record<string, PriorityLevel> = {};
     ranked.forEach(r => { map[r.topicId] = r.level; });
     return map;
@@ -64,13 +60,9 @@ export default function DashboardPage() {
   }
 
   const todayPlan = currentPlan.days.find(d => d.date === today) || currentPlan.days[0];
-
-  // Calculate progress
   const totalSessions = currentPlan.days.reduce((acc, d) => acc + d.sessions.length, 0);
   const completedSessions = currentPlan.days.reduce((acc, d) => acc + d.sessions.filter(s => s.status === "completed").length, 0);
   const progressPercent = totalSessions > 0 ? Math.round((completedSessions / totalSessions) * 100) : 0;
-
-  // Calculate preparation level
   const totalChapters = onboarding.selectedChapters.length;
   const preparedChapters = Object.values(onboarding.chapterStatuses).filter(s => s === "prepared").length;
   const partialChapters = Object.values(onboarding.chapterStatuses).filter(s => s === "partial").length;
@@ -96,6 +88,9 @@ export default function DashboardPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 -mt-4 space-y-6">
+        {/* Exam Countdown */}
+        <ExamCountdown />
+
         {/* Quick Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div className="card text-center py-4">
@@ -118,6 +113,9 @@ export default function DashboardPage() {
             <div className={`text-sm font-bold ${modeMessage.color}`}>{modeMessage.text}</div>
           </div>
         </div>
+
+        {/* Streak Counter */}
+        <StreakCounter />
 
         {/* Overall Progress */}
         <div className="card">
@@ -189,10 +187,40 @@ export default function DashboardPage() {
         {/* Missed a day? */}
         <MissedDayButton />
 
+        {/* AI Doubt Solver Quick Access */}
+        <Link href="/doubt" className="card flex items-center gap-4 hover:shadow-md transition-all group border-2 border-dashed border-purple-200 hover:border-purple-400">
+          <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <MessageCircle className="w-6 h-6 text-purple-600" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-bold text-gray-900 text-sm">AI Doubt Solver</h3>
+            <p className="text-xs text-gray-500">Stuck on a concept? Ask our AI tutor anything.</p>
+          </div>
+          <ArrowRight className="w-5 h-5 text-purple-400 group-hover:translate-x-1 transition-transform" />
+        </Link>
+
+        {/* AI Study Plan Optimizer */}
+        <div className="card">
+          <div className="flex items-center gap-2 mb-3">
+            <Sparkles className="w-5 h-5 text-purple-500" />
+            <h3 className="font-bold text-gray-900 text-sm">AI Study Optimizer</h3>
+          </div>
+          <p className="text-xs text-gray-500 mb-4">Let AI analyze your progress and suggest what to study next.</p>
+          <PlanOptimizer />
+        </div>
+
         {/* Marks per Hour — highest-return topics */}
         <MarksPerHour />
 
-        {/* What Should I Do Now? — floating action button */}
+        {/* AI Quiz Generator */}
+        <div className="card">
+          <AIQuizGenerator />
+        </div>
+
+        {/* Confidence Heatmap */}
+        <ConfidenceHeatmap />
+
+        {/* What Should I Do Now? */}
         <WhatNowButton />
 
         {/* Quick Actions */}
@@ -253,6 +281,10 @@ export default function DashboardPage() {
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
           Plan
         </Link>
+        <Link href="/doubt" className="bottom-nav-item">
+          <MessageCircle className="w-5 h-5" />
+          AI
+        </Link>
         <Link href="/practice" className="bottom-nav-item">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>
           Practice
@@ -260,10 +292,6 @@ export default function DashboardPage() {
         <Link href="/progress" className="bottom-nav-item">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
           Progress
-        </Link>
-        <Link href="/resources" className="bottom-nav-item">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-          Profile
         </Link>
       </div>
     </div>
