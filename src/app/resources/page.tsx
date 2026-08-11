@@ -12,7 +12,7 @@ export default function ResourcesPage() {
   const [filter, setFilter] = useState<"all" | "video" | "revision" | "practice">("all");
   const [selectedChapter, setSelectedChapter] = useState<string | null>(null);
 
-  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject) : [];
+  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject, onboarding.selectedClass ?? undefined) : [];
   const selectedChapters = chapters.filter(ch => onboarding.selectedChapters.includes(ch.id));
 
   const filteredResources = useMemo(() => {

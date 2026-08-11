@@ -9,7 +9,7 @@ import { getChapters, getTopics } from "@/lib/syllabus";
 export default function ProgressPage() {
   const { currentPlan, onboarding, quizAttempts } = useStore();
 
-  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject) : [];
+  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject, onboarding.selectedClass ?? undefined) : [];
   const selectedChapters = chapters.filter(ch => onboarding.selectedChapters.includes(ch.id));
 
   // Calculate stats
@@ -19,7 +19,7 @@ export default function ProgressPage() {
   // Chapter progress
   const chapterProgress = selectedChapters.map(ch => {
     const status = onboarding.chapterStatuses[ch.id] || "not_prepared";
-    const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id) : [];
+    const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id, onboarding.selectedClass ?? undefined) : [];
     const doneTopics = topics.filter(t => {
       const ts = onboarding.topicStatuses[t.id];
       return ts === "done";
@@ -38,7 +38,7 @@ export default function ProgressPage() {
   const weakAreas = useMemo(() => {
     const weak: { chapter: string; topic: string; status: string }[] = [];
     for (const ch of selectedChapters) {
-      const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id) : [];
+      const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id, onboarding.selectedClass ?? undefined) : [];
       for (const t of topics) {
         const ts = onboarding.topicStatuses[t.id] || "not_done";
         if (ts === "not_done" || ts === "partial" || ts === "unknown") {
@@ -53,7 +53,7 @@ export default function ProgressPage() {
   const masteredAreas = useMemo(() => {
     const mastered: string[] = [];
     for (const ch of selectedChapters) {
-      const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id) : [];
+      const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id, onboarding.selectedClass ?? undefined) : [];
       const allDone = topics.every(t => onboarding.topicStatuses[t.id] === "done");
       if (allDone && topics.length > 0) mastered.push(ch.name);
     }

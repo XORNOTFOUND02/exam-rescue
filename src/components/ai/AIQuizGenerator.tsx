@@ -15,7 +15,7 @@ export default function AIQuizGenerator() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [error, setError] = useState("");
 
-  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject) : [];
+  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject, onboarding.selectedClass ?? undefined) : [];
   const selectedChapters = chapters.filter(ch => onboarding.selectedChapters.includes(ch.id));
 
   const handleGenerate = async (chapterId: string, chapterName: string) => {

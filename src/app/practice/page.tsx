@@ -16,14 +16,14 @@ export default function PracticePage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [quiz, setQuiz] = useState<Question[]>([]);
 
-  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject) : [];
+  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject, onboarding.selectedClass ?? undefined) : [];
   const selectedChapters = chapters.filter(ch => onboarding.selectedChapters.includes(ch.id));
 
   // Get available topics with questions
   const availableTopics = useMemo(() => {
     const topics: { id: string; name: string; chapterName: string; hasQuestions: boolean }[] = [];
     for (const ch of selectedChapters) {
-      const chTopics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id) : [];
+      const chTopics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id, onboarding.selectedClass ?? undefined) : [];
       for (const t of chTopics) {
         const hasQ = questionBank.some(q => q.topicId === t.id);
         topics.push({ id: t.id, name: t.name, chapterName: ch.name, hasQuestions: hasQ });

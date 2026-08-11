@@ -4,7 +4,7 @@
 
 import { Subject, Chapter, Topic } from '@/types';
 
-export const mathSubject: Subject = {
+export const mathsSubject: Subject = {
   id: 'mathematics',
   classLevelId: 9,
   name: 'Mathematics',
@@ -12,7 +12,7 @@ export const mathSubject: Subject = {
   color: '#6366f1',
 };
 
-export const mathChapters: Chapter[] = [
+export const mathsChapters: Chapter[] = [
   { id: 'math-ch1', subjectId: 'mathematics', chapterNumber: 1, name: 'Number Systems', description: 'Real numbers, irrational numbers, number line', topicCount: 4 },
   { id: 'math-ch2', subjectId: 'mathematics', chapterNumber: 2, name: 'Polynomials', description: 'Polynomials in one variable, zeroes, factor theorem', topicCount: 4 },
   { id: 'math-ch3', subjectId: 'mathematics', chapterNumber: 3, name: 'Coordinate Geometry', description: 'Cartesian plane, coordinates of a point', topicCount: 3 },
@@ -30,7 +30,7 @@ export const mathChapters: Chapter[] = [
   { id: 'math-ch15', subjectId: 'mathematics', chapterNumber: 15, name: 'Probability', description: 'Probability of events, experimental probability', topicCount: 3 },
 ];
 
-export const mathTopics: Record<string, Topic[]> = {
+export const mathsTopics: Record<string, Topic[]> = {
   'math-ch1': [
     { id: 'math-ch1-t1', chapterId: 'math-ch1', name: 'Real Numbers', importance: 9, difficulty: 7, estimatedMinutes: 30 },
     { id: 'math-ch1-t2', chapterId: 'math-ch1', name: 'Irrational Numbers', importance: 8, difficulty: 7, estimatedMinutes: 25 },

@@ -11,7 +11,7 @@ export default function ConfidenceHeatmap() {
     const chapters: { name: string; topics: { name: string; status: string; confidence: number }[] }[] = [];
 
     for (const chapterId of onboarding.selectedChapters) {
-      const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, chapterId) : [];
+      const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, chapterId, onboarding.selectedClass ?? undefined) : [];
       if (topics.length === 0) continue;
 
       const topicData = topics.map(t => {

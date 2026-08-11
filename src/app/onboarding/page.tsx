@@ -59,7 +59,7 @@ function StepSubject() {
 function StepChapters() {
   const { onboarding, toggleChapter } = useStore();
   const [search, setSearch] = useState("");
-  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject) : [];
+  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject, onboarding.selectedClass ?? undefined) : [];
   const filtered = chapters.filter(ch => ch.name.toLowerCase().includes(search.toLowerCase()));
 
   const allSelected = filtered.length > 0 && filtered.every(ch => onboarding.selectedChapters.includes(ch.id));
@@ -128,7 +128,7 @@ function StepChapters() {
 function StepPreparation() {
   const { onboarding, setChapterStatus, setTopicStatus } = useStore();
   const [expandedChapter, setExpandedChapter] = useState<string | null>(null);
-  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject) : [];
+  const chapters = onboarding.selectedSubject ? getChapters(onboarding.selectedSubject, onboarding.selectedClass ?? undefined) : [];
   const selectedChapters = chapters.filter(ch => onboarding.selectedChapters.includes(ch.id));
 
   const statusColors: Record<string, string> = {
@@ -153,7 +153,7 @@ function StepPreparation() {
         {selectedChapters.map(ch => {
           const status = onboarding.chapterStatuses[ch.id] || "not_prepared";
           const isExpanded = expandedChapter === ch.id && status === "partial";
-          const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id) : [];
+          const topics = onboarding.selectedSubject ? getTopics(onboarding.selectedSubject, ch.id, onboarding.selectedClass ?? undefined) : [];
 
           return (
             <div key={ch.id} className="border border-white/10 rounded-2xl overflow-hidden bg-white/5">
@@ -172,7 +172,7 @@ function StepPreparation() {
                 {shouldShowOneShot(status) && onboarding.selectedSubject && (
                   <div className="mt-4">
                     {(() => {
-                      const video = getOneShotVideo(onboarding.selectedSubject, ch.id);
+                      const video = getOneShotVideo(onboarding.selectedSubject, ch.id, onboarding.selectedClass ?? undefined);
                       if (!video) return null;
                       return (
                         <div>
