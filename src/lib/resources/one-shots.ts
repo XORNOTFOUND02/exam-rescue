@@ -84,7 +84,7 @@ export function getOneShotVideo(subjectId: string, chapterId: string): OneShotVi
   switch (subjectId) {
     case 'science': return scienceOneShots[chapterId] || null;
     case 'mathematics': return mathOneShots[chapterId] || null;
-    case 'social-science': return sstOneShots[chapterId] || null;
+    case 'social_science': return sstOneShots[chapterId] || null;
     case 'english': return englishOneShots[chapterId] || null;
     default: return null;
   }
