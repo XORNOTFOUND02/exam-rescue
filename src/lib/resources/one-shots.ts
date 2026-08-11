@@ -1,8 +1,8 @@
 // YouTube one-shot video mappings for Class 10 chapters
 // Science: Prashant Kirad (ExpHub)
-// Social Science: Digraj Singh Rajput
+// Social Science: Digraj Singh Rajput (full chapter explanations)
 // Maths: Shobhit Nirwan
-// English: Educational Content
+// English: Educational Bhaiya
 
 export interface OneShotVideo {
   channel: string;
@@ -46,38 +46,57 @@ const mathOneShots: Record<string, OneShotVideo> = {
 
 const sstOneShots: Record<string, OneShotVideo> = {
   // History (ss-hist-ch*)
-  'ss-hist-ch1': { channel: 'Digraj Singh Rajput', videoId: 'JXeryAV8JNE', title: 'The Rise of Nationalism in Europe' },
+  'ss-hist-ch1': { channel: 'Digraj Singh Rajput', videoId: 'lTbloYiHdiQ', title: 'The Rise of Nationalism in Europe' },
   'ss-hist-ch2': { channel: 'Digraj Singh Rajput', videoId: 'exByrWPeYvk', title: 'Nationalism in India' },
-  'ss-hist-ch3': { channel: 'Digraj Singh Rajput', videoId: 'kLe3K7JEYO8', title: 'The Making of a Global World' },
-  'ss-hist-ch4': { channel: 'Digraj Singh Rajput', videoId: '9XWKDo5LElU', title: 'The Age of Industrialisation' },
-  'ss-hist-ch5': { channel: 'Digraj Singh Rajput', videoId: 'UWBwLodPMwg', title: 'Print Culture and The Modern World' },
+  'ss-hist-ch3': { channel: 'Digraj Singh Rajput', videoId: 'DMs_3ZnaN5M', title: 'The Making of a Global World' },
+  'ss-hist-ch4': { channel: 'Digraj Singh Rajput', videoId: '1fG7LEJBClU', title: 'The Age of Industrialisation' },
+  'ss-hist-ch5': { channel: 'Digraj Singh Rajput', videoId: 'oI1Pw9qEYyU', title: 'Print Culture and The Modern World' },
   // Geography (ss-geo-ch*)
-  'ss-geo-ch1': { channel: 'Digraj Singh Rajput', videoId: 'Cq5ULsLLItY', title: 'Resources and Development' },
-  'ss-geo-ch2': { channel: 'Digraj Singh Rajput', videoId: 'GqLBGoMkEVA', title: 'Forest and Wildlife Resources' },
-  'ss-geo-ch3': { channel: 'Digraj Singh Rajput', videoId: 'kEhVWVCeUTk', title: 'Water Resources' },
+  'ss-geo-ch1': { channel: 'Digraj Singh Rajput', videoId: 'H9RAGaOBpr8', title: 'Resources and Development' },
+  'ss-geo-ch2': { channel: 'Digraj Singh Rajput', videoId: '8svGUETOw5o', title: 'Forest and Wildlife Resources' },
+  'ss-geo-ch3': { channel: 'Digraj Singh Rajput', videoId: 'xOyDX8nAc_o', title: 'Water Resources' },
   'ss-geo-ch4': { channel: 'Digraj Singh Rajput', videoId: 'kmnddbK-VqY', title: 'Agriculture' },
-  'ss-geo-ch5': { channel: 'Digraj Singh Rajput', videoId: 'zaiju4KFOPg', title: 'Minerals and Energy Resources' },
+  'ss-geo-ch5': { channel: 'Digraj Singh Rajput', videoId: 'iuR9YIiDXFE', title: 'Minerals and Energy Resources' },
   'ss-geo-ch6': { channel: 'Digraj Singh Rajput', videoId: 'NTcr_rYHiSE', title: 'Manufacturing Industries' },
-  'ss-geo-ch7': { channel: 'Digraj Singh Rajput', videoId: 'x0OzQNRziaE', title: 'Lifelines of National Economy' },
+  'ss-geo-ch7': { channel: 'Digraj Singh Rajput', videoId: 'QWQUKfMIJP8', title: 'Lifelines of National Economy' },
   // Political Science (ss-ps-ch*)
-  'ss-ps-ch1': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Power Sharing' },
-  'ss-ps-ch2': { channel: 'Digraj Singh Rajput', videoId: 'q5uuKyIwAPM', title: 'Federalism' },
+  'ss-ps-ch1': { channel: 'Digraj Singh Rajput', videoId: '1HxLCF3sDzA', title: 'Power Sharing' },
+  'ss-ps-ch2': { channel: 'Digraj Singh Rajput', videoId: 'I0ZmY77j0gg', title: 'Federalism' },
   'ss-ps-ch3': { channel: 'Digraj Singh Rajput', videoId: 'O4GfrcwDF24', title: 'Democracy and Diversity' },
-  'ss-ps-ch4': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Gender, Religion and Caste' },
+  'ss-ps-ch4': { channel: 'Digraj Singh Rajput', videoId: 'Jy2rireNJBs', title: 'Gender, Religion and Caste' },
   'ss-ps-ch5': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Political Parties' },
   'ss-ps-ch6': { channel: 'Digraj Singh Rajput', videoId: 'JVBWKBYsvH4', title: 'Outcomes of Democracy' },
   // Economics (ss-eco-ch*)
-  'ss-eco-ch1': { channel: 'Digraj Singh Rajput', videoId: 'kNh_4EtB31A', title: 'Development' },
-  'ss-eco-ch2': { channel: 'Digraj Singh Rajput', videoId: '6avWRnhAvSU', title: 'Sectors of the Indian Economy' },
+  'ss-eco-ch1': { channel: 'Digraj Singh Rajput', videoId: 'L-FGyJY0Thk', title: 'Development' },
+  'ss-eco-ch2': { channel: 'Digraj Singh Rajput', videoId: 'Kll5_iIJj2g', title: 'Sectors of the Indian Economy' },
   'ss-eco-ch3': { channel: 'Digraj Singh Rajput', videoId: 'V6LPuBEXCfE', title: 'Money and Credit' },
   'ss-eco-ch4': { channel: 'Digraj Singh Rajput', videoId: 'PK2YonJyUeg', title: 'Globalisation and the Indian Economy' },
   'ss-eco-ch5': { channel: 'Digraj Singh Rajput', videoId: 'gtFjdcVcvys', title: 'Consumer Rights' },
 };
 
+// English one-shots from Educational Bhaiya
+// eng-ff-* = First Flight Prose, eng-fp-* = First Flight Poetry, eng-ww-* = Footprints without Feet
 const englishOneShots: Record<string, OneShotVideo> = {
-  'eng-ch1': { channel: 'Educational Content', videoId: 'dQw4w9WgXcQ', title: 'First Flight - Prose' },
-  'eng-ch2': { channel: 'Educational Content', videoId: 'dQw4w9WgXcQ', title: 'First Flight - Poetry' },
-  'eng-ch3': { channel: 'Educational Content', videoId: 'dQw4w9WgXcQ', title: 'Footprints without Feet' },
+  // First Flight Prose — all map to the full one-shot
+  'eng-ff-ch1': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'A Letter to God' },
+  'eng-ff-ch2': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'Nelson Mandela: Long Walk to Freedom' },
+  'eng-ff-ch3': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'Two Stories about Flying' },
+  'eng-ff-ch4': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'From the Diary of Anne Frank' },
+  'eng-ff-ch5': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'The Hundred Dresses - I' },
+  'eng-ff-ch6': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'The Hundred Dresses - II' },
+  'eng-ff-ch7': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'Glimpses of India' },
+  'eng-ff-ch8': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'Mijbil the Otter' },
+  'eng-ff-ch9': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'Madam Rides the Bus' },
+  'eng-ff-ch10': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'The Sermon at Benares' },
+  'eng-ff-ch11': { channel: 'Educational Bhaiya', videoId: 't-VEZWcZTYQ', title: 'The Proposal' },
+  // First Flight Poetry — all map to the poetry one-shot
+  'eng-fp-ch1': { channel: 'Educational Bhaiya', videoId: 'S42gn-LOGqo', title: 'Dust of Snow / Fire and Ice' },
+  'eng-fp-ch2': { channel: 'Educational Bhaiya', videoId: 'S42gn-LOGqo', title: 'A Tiger in the Zoo' },
+  'eng-fp-ch3': { channel: 'Educational Bhaiya', videoId: 'S42gn-LOGqo', title: 'How to Tell Wild Animals / The Ball Poem' },
+  'eng-fp-ch4': { channel: 'Educational Bhaiya', videoId: 'S42gn-LOGqo', title: 'Amanda / Animals' },
+  'eng-fp-ch5': { channel: 'Educational Bhaiya', videoId: 'S42gn-LOGqo', title: 'The Ball Poem / For Anne Gregory' },
+  // Footprints without Feet
+  'eng-ww-ch1': { channel: 'Educational Bhaiya', videoId: '1CY8E_8nuXY', title: 'Footprints without Feet' },
 };
 
 export function getOneShotVideo(subjectId: string, chapterId: string): OneShotVideo | null {
