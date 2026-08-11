@@ -45,33 +45,33 @@ const mathOneShots: Record<string, OneShotVideo> = {
 };
 
 const sstOneShots: Record<string, OneShotVideo> = {
-  // History
-  'sst-ch1': { channel: 'Digraj Singh Rajput', videoId: 'JXeryAV8JNE', title: 'The Rise of Nationalism in Europe' },
-  'sst-ch2': { channel: 'Digraj Singh Rajput', videoId: 'exByrWPeYvk', title: 'Nationalism in India' },
-  'sst-ch3': { channel: 'Digraj Singh Rajput', videoId: 'kLe3K7JEYO8', title: 'The Making of a Global World' },
-  'sst-ch4': { channel: 'Digraj Singh Rajput', videoId: '9XWKDo5LElU', title: 'The Age of Industrialisation' },
-  'sst-ch5': { channel: 'Digraj Singh Rajput', videoId: 'UWBwLodPMwg', title: 'Print Culture and The Modern World' },
-  // Geography
-  'sst-ch6': { channel: 'Digraj Singh Rajput', videoId: 'Cq5ULsLLItY', title: 'Resources and Development' },
-  'sst-ch7': { channel: 'Digraj Singh Rajput', videoId: 'GqLBGoMkEVA', title: 'Forest and Wildlife Resources' },
-  'sst-ch8': { channel: 'Digraj Singh Rajput', videoId: 'kEhVWVCeUTk', title: 'Water Resources' },
-  'sst-ch9': { channel: 'Digraj Singh Rajput', videoId: 'kmnddbK-VqY', title: 'Agriculture' },
-  'sst-ch10': { channel: 'Digraj Singh Rajput', videoId: 'zaiju4KFOPg', title: 'Minerals and Energy Resources' },
-  'sst-ch11': { channel: 'Digraj Singh Rajput', videoId: 'NTcr_rYHiSE', title: 'Manufacturing Industries' },
-  'sst-ch12': { channel: 'Digraj Singh Rajput', videoId: 'x0OzQNRziaE', title: 'Lifelines of National Economy' },
-  // Civics
-  'sst-ch13': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Power Sharing' },
-  'sst-ch14': { channel: 'Digraj Singh Rajput', videoId: 'q5uuKyIwAPM', title: 'Federalism' },
-  'sst-ch15': { channel: 'Digraj Singh Rajput', videoId: 'O4GfrcwDF24', title: 'Democracy and Diversity' },
-  'sst-ch16': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Political Parties' },
-  'sst-ch17': { channel: 'Digraj Singh Rajput', videoId: 'JVBWKBYsvH4', title: 'Outcomes of Democracy' },
-  // Economics
-  'sst-ch18': { channel: 'Digraj Singh Rajput', videoId: 'kNh_4EtB31A', title: 'Development' },
-  'sst-ch19': { channel: 'Digraj Singh Rajput', videoId: '6avWRnhAvSU', title: 'Sectors of the Indian Economy' },
-  'sst-ch20': { channel: 'Digraj Singh Rajput', videoId: 'V6LPuBEXCfE', title: 'Money and Credit' },
-  'sst-ch21': { channel: 'Digraj Singh Rajput', videoId: 'PK2YonJyUeg', title: 'Globalisation and the Indian Economy' },
-  'sst-ch22': { channel: 'Digraj Singh Rajput', videoId: 'gtFjdcVcvys', title: 'Consumer Rights' },
-  'sst-ch23': { channel: 'Digraj Singh Rajput', videoId: 'mim9Z_HxX-Q', title: 'Indian Economy Challenges' },
+  // History (ss-hist-ch*)
+  'ss-hist-ch1': { channel: 'Digraj Singh Rajput', videoId: 'JXeryAV8JNE', title: 'The Rise of Nationalism in Europe' },
+  'ss-hist-ch2': { channel: 'Digraj Singh Rajput', videoId: 'exByrWPeYvk', title: 'Nationalism in India' },
+  'ss-hist-ch3': { channel: 'Digraj Singh Rajput', videoId: 'kLe3K7JEYO8', title: 'The Making of a Global World' },
+  'ss-hist-ch4': { channel: 'Digraj Singh Rajput', videoId: '9XWKDo5LElU', title: 'The Age of Industrialisation' },
+  'ss-hist-ch5': { channel: 'Digraj Singh Rajput', videoId: 'UWBwLodPMwg', title: 'Print Culture and The Modern World' },
+  // Geography (ss-geo-ch*)
+  'ss-geo-ch1': { channel: 'Digraj Singh Rajput', videoId: 'Cq5ULsLLItY', title: 'Resources and Development' },
+  'ss-geo-ch2': { channel: 'Digraj Singh Rajput', videoId: 'GqLBGoMkEVA', title: 'Forest and Wildlife Resources' },
+  'ss-geo-ch3': { channel: 'Digraj Singh Rajput', videoId: 'kEhVWVCeUTk', title: 'Water Resources' },
+  'ss-geo-ch4': { channel: 'Digraj Singh Rajput', videoId: 'kmnddbK-VqY', title: 'Agriculture' },
+  'ss-geo-ch5': { channel: 'Digraj Singh Rajput', videoId: 'zaiju4KFOPg', title: 'Minerals and Energy Resources' },
+  'ss-geo-ch6': { channel: 'Digraj Singh Rajput', videoId: 'NTcr_rYHiSE', title: 'Manufacturing Industries' },
+  'ss-geo-ch7': { channel: 'Digraj Singh Rajput', videoId: 'x0OzQNRziaE', title: 'Lifelines of National Economy' },
+  // Political Science (ss-ps-ch*)
+  'ss-ps-ch1': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Power Sharing' },
+  'ss-ps-ch2': { channel: 'Digraj Singh Rajput', videoId: 'q5uuKyIwAPM', title: 'Federalism' },
+  'ss-ps-ch3': { channel: 'Digraj Singh Rajput', videoId: 'O4GfrcwDF24', title: 'Democracy and Diversity' },
+  'ss-ps-ch4': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Gender, Religion and Caste' },
+  'ss-ps-ch5': { channel: 'Digraj Singh Rajput', videoId: 'rCNNEZFLwtM', title: 'Political Parties' },
+  'ss-ps-ch6': { channel: 'Digraj Singh Rajput', videoId: 'JVBWKBYsvH4', title: 'Outcomes of Democracy' },
+  // Economics (ss-eco-ch*)
+  'ss-eco-ch1': { channel: 'Digraj Singh Rajput', videoId: 'kNh_4EtB31A', title: 'Development' },
+  'ss-eco-ch2': { channel: 'Digraj Singh Rajput', videoId: '6avWRnhAvSU', title: 'Sectors of the Indian Economy' },
+  'ss-eco-ch3': { channel: 'Digraj Singh Rajput', videoId: 'V6LPuBEXCfE', title: 'Money and Credit' },
+  'ss-eco-ch4': { channel: 'Digraj Singh Rajput', videoId: 'PK2YonJyUeg', title: 'Globalisation and the Indian Economy' },
+  'ss-eco-ch5': { channel: 'Digraj Singh Rajput', videoId: 'gtFjdcVcvys', title: 'Consumer Rights' },
 };
 
 const englishOneShots: Record<string, OneShotVideo> = {
