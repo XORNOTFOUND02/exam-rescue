@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Search, ChevronDown, ChevronUp, Zap, AlertTriangle } from "lucide-react";
 import YouTubeEmbed from "@/components/shared/YouTubeEmbed";
@@ -379,6 +379,9 @@ export default function OnboardingPage() {
   const router = useRouter();
   const { onboarding, setOnboardingStep, setCurrentPlan, setLoading, isLoading } = useStore();
   const step = onboarding.currentStep;
+
+  // Reset isLoading on mount in case it was stuck from a previous session
+  useEffect(() => { setLoading(false); }, [setLoading]);
 
   const steps = ["Class", "Subject", "Chapters", "Preparation", "Exam Date", "Study Time"];
   const canNext = useMemo(() => {
