@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const phases = [
   { phase: 'Phase 1', name: 'Assess' },
@@ -30,9 +31,10 @@ function Architecture() {
 
         <motion.div className="mt-16 flex justify-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.0, delay: 0.6 }}>
           <Link href="/onboarding">
-            <motion.button className="px-8 py-4 bg-white text-black rounded-full text-[16px] font-medium cursor-pointer" whileHover={{ scale: 1.05, backgroundColor: '#e2e2e6' }} whileTap={{ scale: 0.97 }}>
+            <motion.div className="inline-flex items-center gap-2.5 h-12 px-8 bg-white rounded-full text-black text-[14px] font-bold uppercase tracking-[0.04em] cursor-pointer" whileHover={{ scale: 1.04, backgroundColor: '#e8e8e8' }} whileTap={{ scale: 0.96 }}>
               Start My Strategy
-            </motion.button>
+              <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+            </motion.div>
           </Link>
         </motion.div>
       </div>

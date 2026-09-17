@@ -6,6 +6,7 @@ import Link from 'next/link';
 import SynapseXLogo from './SynapseXLogo';
 import SquashHamburger from './SquashHamburger';
 import ScrambleText from './ScrambleText';
+import { ArrowRight } from 'lucide-react';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,86 +25,71 @@ function Navbar() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.8 }}
     >
-      <div className="flex items-center justify-between h-full px-4 sm:px-6 md:px-8">
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-2">
-          <motion.div
-            className="h-12 px-5 bg-white/15 backdrop-blur-md rounded-[14px] flex items-center gap-2.5 cursor-pointer"
-            whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.22)' }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <SynapseXLogo size={18} className="text-white" />
-            <span className="text-white text-[16px] font-medium tracking-tight">Exam Rescue</span>
-          </motion.div>
+      {/* Desktop nav */}
+      <div className="hidden md:flex items-center justify-between h-full px-6 md:px-10 lg:px-14">
+        {/* Logo */}
+        <motion.div
+          className="flex items-center gap-2.5 cursor-pointer"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <SynapseXLogo size={20} className="text-white" />
+          <span className="text-white text-[17px] font-semibold tracking-tight">Exam Rescue</span>
+        </motion.div>
 
-          <motion.div
-            className="h-12 bg-white/15 backdrop-blur-md rounded-[14px] flex items-center overflow-hidden"
-            animate={{ width: menuOpen ? 290 : 48 }}
-            transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+        {/* Nav links — visible like references */}
+        <div className="flex items-center gap-8">
+          <button
+            className="text-white/50 hover:text-white text-[13px] font-medium uppercase tracking-[0.12em] transition-colors"
+            onMouseEnter={() => setHoveredLink('about')}
+            onMouseLeave={() => setHoveredLink(null)}
+            onClick={() => scrollTo(window.innerHeight)}
           >
-            <motion.div
-              className="flex items-center justify-center"
-              style={{ width: 48, height: 48, borderRadius: 14 }}
-              animate={{
-                width: menuOpen ? 36 : 48,
-                height: menuOpen ? 36 : 48,
-                borderRadius: menuOpen ? 11 : 14,
-                marginLeft: menuOpen ? 6 : 0,
-              }}
-              whileHover={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
-            >
-              <SquashHamburger isOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)} />
-            </motion.div>
-
-            <AnimatePresence>
-              {menuOpen && (
-                <motion.div
-                  className="flex items-center gap-6 ml-4"
-                  initial={{ opacity: 0, x: 15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <button
-                    className="text-white/85 hover:text-white text-[16px] font-normal transition-colors"
-                    onMouseEnter={() => setHoveredLink('about')}
-                    onMouseLeave={() => setHoveredLink(null)}
-                    onClick={() => scrollTo(window.innerHeight)}
-                  >
-                    <ScrambleText text="How It Works" isHovered={hoveredLink === 'about'} />
-                  </button>
-                  <button
-                    className="text-white/85 hover:text-white text-[16px] font-normal transition-colors"
-                    onMouseEnter={() => setHoveredLink('metrics')}
-                    onMouseLeave={() => setHoveredLink(null)}
-                    onClick={() => scrollTo(window.innerHeight * 2)}
-                  >
-                    <ScrambleText text="Stats" isHovered={hoveredLink === 'metrics'} />
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
+            <ScrambleText text="How It Works" isHovered={hoveredLink === 'about'} />
+          </button>
+          <button
+            className="text-white/50 hover:text-white text-[13px] font-medium uppercase tracking-[0.12em] transition-colors"
+            onMouseEnter={() => setHoveredLink('stats')}
+            onMouseLeave={() => setHoveredLink(null)}
+            onClick={() => scrollTo(window.innerHeight * 2)}
+          >
+            <ScrambleText text="Stats" isHovered={hoveredLink === 'stats'} />
+          </button>
+          <button
+            className="text-white/50 hover:text-white text-[13px] font-medium uppercase tracking-[0.12em] transition-colors"
+            onMouseEnter={() => setHoveredLink('tech')}
+            onMouseLeave={() => setHoveredLink(null)}
+            onClick={() => scrollTo(window.innerHeight * 3)}
+          >
+            <ScrambleText text="Features" isHovered={hoveredLink === 'tech'} />
+          </button>
         </div>
 
-        {/* Mobile nav */}
-        <div className="flex md:hidden items-center gap-2">
-          <AnimatePresence>
-            {!menuOpen && (
-              <motion.div
-                className="h-9 px-4 bg-white/15 backdrop-blur-md rounded-[10px] flex items-center gap-2 cursor-pointer"
-                initial={{ width: 'auto' }}
-                exit={{ width: 0, padding: 0 }}
-                transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-              >
-                <SynapseXLogo size={14} className="text-white" />
-                <span className="text-white text-[13px] font-medium tracking-tight">Exam Rescue</span>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
+        {/* CTA pill button with arrow — like Marble "APPLY NOW →" */}
+        <Link href="/onboarding">
           <motion.div
-            className="h-9 bg-white/15 backdrop-blur-md rounded-[10px] flex items-center overflow-hidden"
+            className="h-11 px-6 bg-white rounded-full flex items-center gap-2.5 text-black text-[13px] font-bold uppercase tracking-[0.06em] no-underline cursor-pointer"
+            whileHover={{ scale: 1.04, backgroundColor: '#e8e8e8' }}
+            whileTap={{ scale: 0.96 }}
+          >
+            Get Started
+            <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+          </motion.div>
+        </Link>
+      </div>
+
+      {/* Mobile nav */}
+      <div className="flex md:hidden items-center justify-between h-full px-5">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <SynapseXLogo size={16} className="text-white" />
+          <span className="text-white text-[14px] font-semibold tracking-tight">Exam Rescue</span>
+        </div>
+
+        {/* Hamburger */}
+        <div className="flex items-center gap-3">
+          <motion.div
+            className="h-9 bg-white/10 backdrop-blur-md rounded-full flex items-center overflow-hidden"
             animate={{ width: menuOpen ? '100%' : 36 }}
             transition={{ type: 'spring', stiffness: 350, damping: 28 }}
           >
@@ -118,11 +104,12 @@ function Navbar() {
                   initial={{ opacity: 0, x: 15 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 15 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <button className="text-white/85 hover:text-white text-[13px] font-normal" onClick={() => scrollTo(window.innerHeight)}>
+                  <button className="text-white/85 hover:text-white text-[13px] font-medium" onClick={() => scrollTo(window.innerHeight)}>
                     How It Works
                   </button>
-                  <button className="text-white/85 hover:text-white text-[13px] font-normal" onClick={() => scrollTo(window.innerHeight * 2)}>
+                  <button className="text-white/85 hover:text-white text-[13px] font-medium" onClick={() => scrollTo(window.innerHeight * 2)}>
                     Stats
                   </button>
                 </motion.div>
@@ -130,28 +117,6 @@ function Navbar() {
             </AnimatePresence>
           </motion.div>
         </div>
-
-        {/* CTA button — links to /onboarding */}
-        <Link href="/onboarding">
-          <motion.div
-            className="h-12 px-6 bg-white rounded-full flex items-center gap-2 text-black text-[15px] font-normal no-underline md:flex hidden cursor-pointer"
-            whileHover={{ scale: 1.03, backgroundColor: '#e2e2e6' }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <ScrambleText text="Get Started" isHovered={false} />
-          </motion.div>
-        </Link>
-
-        {/* Mobile CTA */}
-        <Link href="/onboarding">
-          <motion.div
-            className="h-9 px-3.5 bg-white rounded-full flex items-center gap-1.5 text-black text-[13px] font-normal no-underline md:hidden cursor-pointer"
-            whileHover={{ scale: 1.03, backgroundColor: '#e2e2e6' }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Get Started
-          </motion.div>
-        </Link>
       </div>
     </motion.nav>
   );
