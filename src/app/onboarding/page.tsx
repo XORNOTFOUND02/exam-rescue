@@ -418,7 +418,11 @@ export default function OnboardingPage() {
 
       setCurrentPlan(plan);
       setLoading(false);
-      router.push("/dashboard");
+
+      // Use setTimeout to ensure state is flushed before navigation
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 100);
     } catch (error) {
       console.error("Failed to generate plan:", error);
       setLoading(false);

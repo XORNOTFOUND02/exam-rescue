@@ -216,10 +216,6 @@ export const useStore = create<AppState>()(
     }),
     {
       name: 'exam-rescue-store',
-      partialize: (state) => ({
-        ...state,
-        isLoading: false, // Never persist loading state
-      }),
     }
   )
 );
