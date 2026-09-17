@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 interface PlanInput {
   subjectId: string;
+  classLevelId: number;
   selectedChapters: string[];
   chapterStatuses: Record<string, PreparationStatus>;
   topicStatuses: Record<string, TopicStatus>;
@@ -165,7 +166,7 @@ function getWhatToStudy(topic: Topic, topicStatus: TopicStatus): string[] {
  * Generate the complete study plan
  */
 export function generateStudyPlan(input: PlanInput): StudyPlan {
-  const { subjectId, selectedChapters, chapterStatuses, topicStatuses, examDate, dailyHours, studyTimeOfDay, learningStyle, breakPreference, userId } = input;
+  const { subjectId, classLevelId, selectedChapters, chapterStatuses, topicStatuses, examDate, dailyHours, studyTimeOfDay, learningStyle, breakPreference, userId } = input;
 
   // Calculate days
   const now = new Date();
@@ -179,7 +180,7 @@ export function generateStudyPlan(input: PlanInput): StudyPlan {
   // Collect all topics
   const allTopics: Topic[] = [];
   for (const chapterId of selectedChapters) {
-    const topics = getTopics(subjectId, chapterId);
+    const topics = getTopics(subjectId, chapterId, classLevelId);
     allTopics.push(...topics);
   }
 

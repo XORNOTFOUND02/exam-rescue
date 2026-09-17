@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Calendar, Clock, BookOpen, Target, Zap, ArrowRight,
@@ -22,8 +22,25 @@ import PlanOptimizer from "@/components/ai/PlanOptimizer";
 
 export default function DashboardPage() {
   const { currentPlan, onboarding, markSessionComplete } = useStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   const today = useMemo(() => new Date().toISOString().split("T")[0], []);
+
+  // Hydration guard — show nothing until client-side state is ready
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <Zap className="w-6 h-6 text-indigo-600" />
+          </div>
+          <p className="text-sm text-gray-500">Loading your plan...</p>
+        </div>
+      </div>
+    );
+  }
   const daysRemaining = useMemo(() => {
     if (!onboarding.examDate) return 0;
     const examTime = new Date(onboarding.examDate).getTime();

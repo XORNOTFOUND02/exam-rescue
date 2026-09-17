@@ -395,25 +395,31 @@ export default function OnboardingPage() {
 
   const handleGenerate = async () => {
     setLoading(true);
-    // Simulate generation time
-    await new Promise(resolve => setTimeout(resolve, 3500));
+    try {
+      // Simulate generation time
+      await new Promise(resolve => setTimeout(resolve, 3500));
 
-    const plan = generateStudyPlan({
-      subjectId: onboarding.selectedSubject!,
-      selectedChapters: onboarding.selectedChapters,
-      chapterStatuses: onboarding.chapterStatuses,
-      topicStatuses: onboarding.topicStatuses,
-      examDate: onboarding.examDate,
-      dailyHours: onboarding.dailyHours,
-      studyTimeOfDay: onboarding.studyTimeOfDay,
-      learningStyle: onboarding.learningStyle,
-      breakPreference: onboarding.breakPreference,
-      userId: "local-user",
-    });
+      const plan = generateStudyPlan({
+        subjectId: onboarding.selectedSubject!,
+        classLevelId: onboarding.selectedClass!,
+        selectedChapters: onboarding.selectedChapters,
+        chapterStatuses: onboarding.chapterStatuses,
+        topicStatuses: onboarding.topicStatuses,
+        examDate: onboarding.examDate,
+        dailyHours: onboarding.dailyHours,
+        studyTimeOfDay: onboarding.studyTimeOfDay,
+        learningStyle: onboarding.learningStyle,
+        breakPreference: onboarding.breakPreference,
+        userId: "local-user",
+      });
 
-    setCurrentPlan(plan);
-    setLoading(false);
-    router.push("/dashboard");
+      setCurrentPlan(plan);
+      setLoading(false);
+      router.push("/dashboard");
+    } catch (error) {
+      console.error("Failed to generate plan:", error);
+      setLoading(false);
+    }
   };
 
   if (isLoading) return <LoadingScreen />;
