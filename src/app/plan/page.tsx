@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowLeft, CheckCircle2, BookOpen,
@@ -121,12 +121,15 @@ function SessionCard({ session, priorityLevel }: { session: StudySession; priori
 
 export default function PlanPage() {
   const [selectedDay, setSelectedDay] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const { currentPlan, onboarding } = useStore();
+
+  useEffect(() => { setMounted(true); }, []);
 
   // Compute priority map for session badges (must be before early return)
   const priorityMap = useMemo(() => {
     if (!onboarding.selectedSubject) return {} as Record<string, PriorityLevel>;
-    const allTopics = getAllTopicsForSubject(onboarding.selectedSubject);
+    const allTopics = getAllTopicsForSubject(onboarding.selectedSubject, onboarding.selectedClass ?? undefined);
     if (allTopics.length === 0) return {} as Record<string, PriorityLevel>;
     const exam = new Date(onboarding.examDate);
     const now = new Date();
@@ -143,6 +146,19 @@ export default function PlanPage() {
     ranked.forEach(r => { map[r.topicId] = r.level; });
     return map;
   }, [onboarding]);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <BookOpen className="w-6 h-6 text-indigo-600" />
+          </div>
+          <p className="text-sm text-gray-500">Loading plan...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!currentPlan) {
     return (

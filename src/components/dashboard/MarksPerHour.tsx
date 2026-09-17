@@ -30,7 +30,7 @@ export default function MarksPerHour() {
     if (!currentPlan) return [];
 
     const subjectId = onboarding.selectedSubject || "science";
-    const allTopics = getAllTopicsForSubject(subjectId);
+    const allTopics = getAllTopicsForSubject(subjectId, onboarding.selectedClass ?? undefined);
     if (allTopics.length === 0) return [];
 
     // Calculate days remaining

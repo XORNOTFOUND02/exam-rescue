@@ -50,7 +50,7 @@ export default function DashboardPage() {
 
   const priorityMap = useMemo<Record<string, PriorityLevel>>(() => {
     if (!onboarding.selectedSubject) return {};
-    const allTopics = getAllTopicsForSubject(onboarding.selectedSubject);
+    const allTopics = getAllTopicsForSubject(onboarding.selectedSubject, onboarding.selectedClass ?? undefined);
     if (allTopics.length === 0) return {};
     const totalMinutes = daysRemaining * (onboarding.dailyHours || 3) * 60;
     const ranked = rankTopicsByPriority(allTopics, onboarding.chapterStatuses, onboarding.topicStatuses, daysRemaining, totalMinutes);
