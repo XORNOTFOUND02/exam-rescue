@@ -396,15 +396,13 @@ export default function OnboardingPage() {
     }
   }, [step, onboarding]);
 
-  const handleGenerate = async () => {
-    setLoading(true);
+  const handleGenerate = () => {
     try {
-      // Simulate generation time
-      await new Promise(resolve => setTimeout(resolve, 3500));
+      setLoading(false);
 
       const plan = generateStudyPlan({
-        subjectId: onboarding.selectedSubject!,
-        classLevelId: onboarding.selectedClass!,
+        subjectId: onboarding.selectedSubject || "science",
+        classLevelId: onboarding.selectedClass || 10,
         selectedChapters: onboarding.selectedChapters,
         chapterStatuses: onboarding.chapterStatuses,
         topicStatuses: onboarding.topicStatuses,
@@ -417,15 +415,11 @@ export default function OnboardingPage() {
       });
 
       setCurrentPlan(plan);
-      setLoading(false);
-
-      // Use setTimeout to ensure state is flushed before navigation
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 100);
+      router.push("/dashboard");
     } catch (error) {
       console.error("Failed to generate plan:", error);
       setLoading(false);
+      alert("Something went wrong generating your plan. Please try again.");
     }
   };
 
