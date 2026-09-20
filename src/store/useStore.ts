@@ -216,14 +216,6 @@ export const useStore = create<AppState>()(
     }),
     {
       name: 'exam-rescue-store',
-      partialize: (state) => ({
-        user: state.user,
-        onboarding: state.onboarding,
-        currentPlan: state.currentPlan,
-        quizAttempts: state.quizAttempts,
-        isPlanGenerated: state.isPlanGenerated,
-        // isLoading intentionally excluded — never persist loading state
-      }),
     }
   )
 );
