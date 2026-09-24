@@ -209,6 +209,7 @@
 /* THE CTA GLASS — three stacked gradients (warm left / cool right) */
 .nx-cta {
   position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -431,10 +432,13 @@
   }
   .nx-title,
   .nx-sub,
-  .nx-feats {
+  .nx-feats,
+  .nx-rule {
     inset: 0;
     font-weight: inherit;
     margin: 0;
+    /* Full-viewport absolute layers must never steal clicks from the CTA */
+    pointer-events: none;
   }
   .nx-bar span,
   .nx-foot span,
