@@ -28,19 +28,6 @@ export default function DashboardPage() {
 
   const today = useMemo(() => new Date().toISOString().split("T")[0], []);
 
-  // Hydration guard — show nothing until client-side state is ready
-  if (!mounted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center mx-auto mb-4 animate-pulse">
-            <Zap className="w-6 h-6 text-indigo-600" />
-          </div>
-          <p className="text-sm text-gray-500">Loading your plan...</p>
-        </div>
-      </div>
-    );
-  }
   const daysRemaining = useMemo(() => {
     if (!onboarding.examDate) return 0;
     const examTime = new Date(onboarding.examDate).getTime();
@@ -58,6 +45,21 @@ export default function DashboardPage() {
     ranked.forEach(r => { map[r.topicId] = r.level; });
     return map;
   }, [onboarding, daysRemaining]);
+
+  // Hydration guard — show nothing until client-side state is ready
+  // NOTE: ALL hooks must run BEFORE this early return (React #310: hooks count mismatch)
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <Zap className="w-6 h-6 text-indigo-600" />
+          </div>
+          <p className="text-sm text-gray-500">Loading your plan...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!currentPlan) {
     return (

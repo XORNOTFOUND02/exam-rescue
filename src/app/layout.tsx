@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceMono.variable} ${inter.variable} ${dancingScript.variable} ${instrumentSerif.variable} ${sora.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${spaceMono.variable} ${inter.variable} ${dancingScript.variable} ${instrumentSerif.variable} ${sora.variable}`}>
       <body className="antialiased">
         {children}
       </body>
