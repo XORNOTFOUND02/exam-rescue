@@ -1,0 +1,1344 @@
+/* ============================================================
+   Exam Rescue × NEURAL — full-viewport hero design system
+   One unit system, glass CTA, entrance timeline, flow canvases.
+   ============================================================ */
+
+/* ---------- 2. Design tokens ---------- */
+.nx-stage {
+  --ink: #ffffff;
+  --sub: #a2a9b8;
+  --nav: #fbfdff;
+  --foot: #f4f8fd;
+  --hair: rgba(196, 214, 232, 0.72);
+  --chev: rgba(214, 232, 250, 0.9);
+  --navdim: #e8ecf0;
+  --feat: #e2ebf5;
+  --veil: 6, 10, 18;
+  --sora: var(--font-sora), "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  position: relative;
+  z-index: 0;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 560px;
+  overflow: hidden;
+  background: #02060f;
+  color: var(--ink);
+  font-family: var(--sora);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+.nx-stage a {
+  color: inherit;
+  text-decoration: none;
+}
+.nx-stage li {
+  list-style: none;
+}
+.nx-stage a:focus-visible,
+.nx-stage button:focus-visible,
+.nx-stage .nx-burger:focus-visible {
+  outline: 2px solid #9fe0ff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- 3. Scale system ---------- */
+.nx-stage {
+  --cover: max(calc(100vw / 1536), calc(100vh / 1024));
+  --fit: calc(100vh / 910);
+  --u: min(var(--cover), var(--fit));
+  --blur: calc(var(--u) * 26);
+  --glow: calc(var(--u) * 34);
+  --hairline: max(1px, calc(var(--u) * 1.6));
+}
+@supports (height: 100dvh) {
+  .nx-stage {
+    --cover: max(calc(100vw / 1536), calc(100dvh / 1024));
+    --fit: calc(100dvh / 910);
+  }
+}
+
+/* ---------- 4. Background layers ---------- */
+.nx-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  z-index: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  background: #03060c;
+}
+
+.nx-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      140% 60% at 50% 40%,
+      rgba(var(--veil), 0.16) 0%,
+      rgba(var(--veil), 0.057) 50%,
+      rgba(var(--veil), 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--veil), 0) 45%,
+      rgba(var(--veil), 0.1) 100%
+    );
+}
+
+/* Fixed top bar (persists when page scrolls to other sections) */
+.nx-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 80px;
+  pointer-events: none;
+}
+.nx-bar > * {
+  pointer-events: auto;
+}
+
+.nx-hero,
+.nx-foot {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+}
+.nx-hero {
+  top: 0;
+  bottom: 0;
+}
+.nx-foot {
+  bottom: 0;
+}
+
+/* ---------- 5. Component skin ---------- */
+.nx-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.nx-brand svg {
+  fill: var(--ink);
+  display: block;
+}
+.nx-caret,
+.nx-navarrow {
+  fill: none;
+  stroke: var(--nav);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nx-navarrow {
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+.nx-pill {
+  border: var(--hairline) solid var(--hair);
+  border-radius: 999px;
+}
+.nx-chev {
+  fill: none;
+  stroke: var(--chev);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nx-cta .nx-arrow {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+.nx-rule {
+  background: linear-gradient(
+    180deg,
+    rgba(186, 200, 214, 0.7) 0%,
+    rgba(206, 220, 232, 0.92) 52%,
+    rgba(182, 198, 212, 0.68) 100%
+  );
+}
+
+/* Per-element variable weights */
+.nx-word {
+  font-variation-settings: "wght" 531;
+  color: var(--ink);
+}
+.nx-nav-link {
+  font-variation-settings: "wght" 506;
+  color: var(--nav);
+}
+.nx-contact {
+  font-variation-settings: "wght" 581;
+  color: var(--navdim);
+}
+.nx-title span {
+  font-variation-settings: "wght" 424;
+  color: var(--ink);
+}
+.nx-sub span {
+  font-variation-settings: "wght" 446;
+  color: var(--sub);
+}
+.nx-cta-label {
+  font-variation-settings: "wght" 497;
+  color: var(--ink);
+}
+.nx-feats li span {
+  font-variation-settings: "wght" 534;
+  color: var(--feat);
+}
+.nx-foot span {
+  font-variation-settings: "wght" 521;
+  color: var(--foot);
+}
+
+/* THE CTA GLASS — three stacked gradients (warm left / cool right) */
+.nx-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  cursor: pointer;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 12, 22, 0) 45%,
+      rgba(6, 12, 22, 0.12) 78%,
+      rgba(6, 12, 22, 0.28) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 226, 178, 0.17) 0%,
+      rgba(255, 236, 208, 0.07) 22%,
+      rgba(176, 206, 238, 0.03) 55%,
+      rgba(150, 196, 244, 0.09) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0.17) 12%,
+      rgba(255, 255, 255, 0.11) 26%,
+      rgba(255, 255, 255, 0.07) 42%,
+      rgba(255, 255, 255, 0.05) 60%,
+      rgba(255, 255, 255, 0.04) 80%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(0.45);
+  backdrop-filter: blur(var(--blur)) saturate(0.45);
+  box-shadow:
+    0 calc(var(--u) * -2) calc(var(--u) * 20) rgba(255, 224, 176, 0.2),
+    0 0 var(--glow) rgba(168, 204, 252, 0.16),
+    inset 0 var(--hairline) 0 0 rgba(255, 251, 242, 0.45);
+}
+
+.nx-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--hairline);
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 252, 246, 0.95) 0%,
+      rgba(255, 252, 246, 0.2) 45%,
+      rgba(255, 252, 246, 0) 78%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 228, 182, 0.95) 0%,
+      rgba(250, 236, 210, 0.7) 12%,
+      rgba(226, 230, 234, 0.03) 32%,
+      rgba(214, 226, 240, 0.02) 62%,
+      rgba(200, 228, 250, 0.7) 90%,
+      rgba(186, 224, 247, 0.95) 100%
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+/* ============================================================
+   6. ENTRANCE SEQUENCE — runs once, ~2.1s, fill-mode backwards
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .nx-stage {
+    --ent-line: cubic-bezier(0.16, 1, 0.3, 1);
+    --ent-soft: cubic-bezier(0.25, 0.8, 0.35, 1);
+    --rise: 9px;
+  }
+
+  @keyframes nx-en-wipe {
+    from {
+      clip-path: inset(-0.78em 0 calc(100% + 0.78em) 0);
+      translate: 0 var(--rise);
+    }
+    to {
+      clip-path: inset(-0.78em 0 -0.78em 0);
+      translate: 0 0;
+    }
+  }
+  @keyframes nx-en-lift {
+    from {
+      opacity: 0;
+      translate: 0 var(--rise);
+    }
+  }
+  @keyframes nx-en-settle {
+    from {
+      opacity: 0;
+      translate: 0 calc(var(--rise) * 0.7);
+      scale: 0.99;
+    }
+  }
+  @keyframes nx-en-draw {
+    from {
+      scale: 1 0;
+    }
+  }
+
+  html:not(.is-entered) .nx-stage .nx-brand {
+    animation: nx-en-lift 0.6s var(--ent-soft) 0.12s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-about {
+    animation: nx-en-lift 0.55s var(--ent-soft) 0.2s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-product {
+    animation: nx-en-lift 0.55s var(--ent-soft) 0.25s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-solutions,
+  html:not(.is-entered) .nx-stage .nx-caret {
+    animation: nx-en-lift 0.55s var(--ent-soft) 0.3s backwards;
+  }
+  html:not(.is-entered) .nx-stage #nx-login,
+  html:not(.is-entered) .nx-stage .nx-navarrow {
+    animation: nx-en-lift 0.55s var(--ent-soft) 0.35s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-pill {
+    animation: nx-en-settle 0.6s var(--ent-soft) 0.4s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-burger {
+    animation: nx-en-lift 0.6s var(--ent-soft) 0.4s backwards;
+  }
+  html:not(.is-entered) .nx-stage #nx-h1a {
+    animation: nx-en-wipe 0.95s var(--ent-line) 0.34s backwards;
+  }
+  html:not(.is-entered) .nx-stage #nx-h1b {
+    animation: nx-en-wipe 0.95s var(--ent-line) 0.44s backwards;
+  }
+  html:not(.is-entered) .nx-stage #nx-sub1 {
+    animation: nx-en-lift 0.7s var(--ent-soft) 0.74s backwards;
+  }
+  html:not(.is-entered) .nx-stage #nx-sub2 {
+    animation: nx-en-lift 0.7s var(--ent-soft) 0.8s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-cta {
+    animation: nx-en-lift 0.8s var(--ent-line) 0.94s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-feats li:nth-child(1) {
+    animation: nx-en-lift 0.6s var(--ent-soft) 1.08s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-feats li:nth-child(2) {
+    animation: nx-en-lift 0.6s var(--ent-soft) 1.15s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-feats li:nth-child(3) {
+    animation: nx-en-lift 0.6s var(--ent-soft) 1.22s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-feats li:nth-child(4) {
+    animation: nx-en-lift 0.6s var(--ent-soft) 1.29s backwards;
+  }
+  html:not(.is-entered) .nx-stage .nx-rule {
+    animation: nx-en-draw 0.55s var(--ent-line) 1.34s backwards;
+    transform-origin: top;
+  }
+  html:not(.is-entered) .nx-stage #nx-foot1 {
+    animation: nx-en-lift 0.6s var(--ent-soft) 1.42s backwards;
+  }
+  html:not(.is-entered) .nx-stage #nx-foot2 {
+    animation: nx-en-lift 0.6s var(--ent-soft) 1.48s backwards;
+  }
+}
+
+/* ============================================================
+   7. ARCHITECTURE A — LOCKED COMPOSITION (desktop)
+   ============================================================ */
+@media (min-width: 1200px) and (min-height: 560px) and (min-aspect-ratio: 100/95) {
+  .nx-bar {
+    left: 50%;
+    right: auto;
+    width: calc(var(--u) * 1536);
+    height: calc(var(--u) * 120);
+    transform: translateX(-50%);
+  }
+  .nx-foot {
+    left: 50%;
+    right: auto;
+    width: calc(var(--u) * 1536);
+    height: calc(var(--u) * 140);
+    transform: translateX(-50%);
+  }
+  .nx-hero {
+    left: 50%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    width: calc(var(--u) * 1536);
+    height: calc(var(--u) * 1024);
+    transform: translate(-50%, -50%);
+  }
+
+  .nx-navtoggle,
+  .nx-burger,
+  .nx-scrim {
+    display: none;
+  }
+  .nx-navpanel {
+    display: contents;
+  }
+  .nx-bar > *,
+  .nx-foot > *,
+  .nx-hero > *,
+  .nx-pill,
+  .nx-caret,
+  .nx-navarrow {
+    position: absolute;
+  }
+  .nx-menu,
+  .nx-menu a,
+  .nx-navpanel > .nx-login {
+    position: static;
+  }
+  .nx-title,
+  .nx-sub,
+  .nx-feats {
+    inset: 0;
+    font-weight: inherit;
+    margin: 0;
+  }
+  .nx-bar span,
+  .nx-foot span,
+  .nx-title span,
+  .nx-sub span,
+  .nx-feats span,
+  .nx-cta-label {
+    position: absolute;
+    line-height: 0;
+    white-space: nowrap;
+  }
+
+  /* Box coordinates — calc(var(--u) * N) */
+  .nx-brand {
+    left: calc(var(--u) * 221);
+    top: calc(var(--u) * 55);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--u) * 7);
+  }
+  .nx-brand svg {
+    width: calc(var(--u) * 23);
+    height: calc(var(--u) * 17);
+  }
+  .nx-brand .nx-word {
+    position: relative;
+  }
+  .nx-caret {
+    left: calc(var(--u) * 744);
+    top: calc(var(--u) * 62.4);
+    width: calc(var(--u) * 9);
+    height: calc(var(--u) * 6);
+    stroke-width: 1.25;
+  }
+  .nx-navarrow {
+    left: calc(var(--u) * 1163);
+    top: calc(var(--u) * 61.6);
+    width: calc(var(--u) * 10);
+    height: calc(var(--u) * 9);
+    stroke-width: 1.2;
+  }
+  .nx-pill {
+    left: calc(var(--u) * 1191.5);
+    top: calc(var(--u) * 43.5);
+    width: calc(var(--u) * 144);
+    height: calc(var(--u) * 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nx-cta {
+    left: calc(var(--u) * 625.8);
+    top: calc(var(--u) * 555.2);
+    width: calc(var(--u) * 279.6);
+    height: calc(var(--u) * 46.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nx-cta .nx-arrow {
+    position: absolute;
+    left: calc(var(--u) * 230.8);
+    top: calc(var(--u) * 17.8);
+    width: calc(var(--u) * 16);
+    height: calc(var(--u) * 11);
+  }
+  .nx-feats li {
+    position: absolute;
+    width: calc(var(--u) * 220);
+    height: calc(var(--u) * 20);
+    display: flex;
+    align-items: center;
+  }
+  .nx-feats .nx-chev {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--u) * 11);
+    height: calc(var(--u) * 20);
+  }
+  .nx-feats li:nth-child(1) {
+    left: calc(var(--u) * 360);
+    top: calc(var(--u) * 718);
+  }
+  .nx-feats li:nth-child(2) {
+    left: calc(var(--u) * 590);
+    top: calc(var(--u) * 719);
+  }
+  .nx-feats li:nth-child(3) {
+    left: calc(var(--u) * 803);
+    top: calc(var(--u) * 721);
+  }
+  .nx-feats li:nth-child(4) {
+    left: calc(var(--u) * 1013);
+    top: calc(var(--u) * 722);
+  }
+  .nx-rule {
+    left: calc(var(--u) * 767);
+    top: calc(var(--u) * 792);
+    width: 1px;
+    height: calc(var(--u) * 57);
+  }
+
+  /* Type coordinates */
+  .nx-word {
+    font-size: calc(var(--u) * 23.4);
+    letter-spacing: calc(var(--u) * 4.8);
+    transform: translate(0, 0);
+  }
+  .nx-about {
+    font-size: calc(var(--u) * 13.5);
+    letter-spacing: calc(var(--u) * -0.5);
+    left: calc(var(--u) * 477);
+    top: calc(var(--u) * 65.66);
+  }
+  .nx-product {
+    font-size: calc(var(--u) * 13.5);
+    letter-spacing: calc(var(--u) * -0.167);
+    left: calc(var(--u) * 568.5);
+    top: calc(var(--u) * 65.66);
+  }
+  .nx-solutions {
+    font-size: calc(var(--u) * 13.5);
+    letter-spacing: calc(var(--u) * -0.5);
+    left: calc(var(--u) * 675);
+    top: calc(var(--u) * 65.66);
+  }
+  #nx-login {
+    font-size: calc(var(--u) * 13.5);
+    letter-spacing: calc(var(--u) * -0.227);
+    left: calc(var(--u) * 1002.5);
+    top: calc(var(--u) * 66.16);
+  }
+  .nx-contact {
+    font-size: calc(var(--u) * 13.5);
+    letter-spacing: calc(var(--u) * 0.25);
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(var(--u) * 21.66);
+    translate: calc(var(--u) * -0.5) 0;
+  }
+  #nx-h1a {
+    font-size: calc(var(--u) * 46.8);
+    letter-spacing: calc(var(--u) * 0.532);
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(var(--u) * 285.222);
+    translate: calc(var(--u) * -1) 0;
+  }
+  #nx-h1b {
+    font-size: calc(var(--u) * 46.8);
+    letter-spacing: calc(var(--u) * -0.398);
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(var(--u) * 335.222);
+    translate: calc(var(--u) * -3) 0;
+  }
+  #nx-sub1 {
+    font-size: calc(var(--u) * 20.6);
+    letter-spacing: calc(var(--u) * 0.367);
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(var(--u) * 408.115);
+    translate: calc(var(--u) * -0.5) 0;
+  }
+  #nx-sub2 {
+    font-size: calc(var(--u) * 19.1);
+    letter-spacing: calc(var(--u) * -0.632);
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(var(--u) * 432.153);
+    translate: calc(var(--u) * -2) 0;
+  }
+  .nx-cta-label {
+    font-size: calc(var(--u) * 22);
+    letter-spacing: calc(var(--u) * -0.312);
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: calc(var(--u) * 23.113);
+    translate: calc(var(--u) * -14.5) 0;
+  }
+  .nx-feats li:nth-child(1) span {
+    font-size: calc(var(--u) * 14.6);
+    letter-spacing: calc(var(--u) * -0.75);
+    left: calc(var(--u) * 26);
+    top: calc(var(--u) * 11.266);
+    translate: 0 -50%;
+  }
+  .nx-feats li:nth-child(2) span {
+    font-size: calc(var(--u) * 14.6);
+    letter-spacing: calc(var(--u) * -0.889);
+    left: calc(var(--u) * 26);
+    top: calc(var(--u) * 11.266);
+    translate: 0 -50%;
+  }
+  .nx-feats li:nth-child(3) span {
+    font-size: calc(var(--u) * 14.6);
+    letter-spacing: calc(var(--u) * -1.067);
+    left: calc(var(--u) * 26);
+    top: calc(var(--u) * 11.266);
+    translate: 0 -50%;
+  }
+  .nx-feats li:nth-child(4) span {
+    font-size: calc(var(--u) * 14.6);
+    letter-spacing: calc(var(--u) * -1.067);
+    left: calc(var(--u) * 29);
+    top: calc(var(--u) * 11.266);
+    translate: 0 -50%;
+  }
+  #nx-foot1 {
+    font-size: calc(var(--u) * 16.3);
+    letter-spacing: calc(var(--u) * -0.256);
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: calc(var(--u) * 101.344);
+    translate: calc(var(--u) * -0.5) 0;
+  }
+  #nx-foot2 {
+    font-size: calc(var(--u) * 16.3);
+    letter-spacing: calc(var(--u) * -0.667);
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: calc(var(--u) * 76.344);
+    translate: calc(var(--u) * -2) 0;
+  }
+
+  .nx-title,
+  .nx-sub {
+    position: absolute;
+  }
+  .nx-feats {
+    position: absolute;
+    display: block;
+  }
+}
+
+/* ============================================================
+   8. ARCHITECTURE B — FLOW (tablet → phone)
+   ============================================================ */
+@media (max-width: 1199px), (max-height: 559px), (max-aspect-ratio: 100/95) {
+  .nx-stage {
+    --c: min(calc(100vw / 430), calc(100vh / 860));
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: calc(env(safe-area-inset-top) + calc(var(--c) * 24))
+      calc(var(--c) * 22)
+      calc(env(safe-area-inset-bottom) + calc(var(--c) * 22));
+  }
+
+  .nx-bar {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    order: 1;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--c) * 16);
+    pointer-events: auto;
+  }
+  .nx-brand {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--c) * 8);
+    position: static;
+  }
+  .nx-brand svg {
+    width: calc(var(--c) * 22);
+    height: auto;
+  }
+  .nx-word {
+    font-size: calc(var(--c) * 19);
+    letter-spacing: 0.06em;
+    position: static;
+    transform: none;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .nx-navtoggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+  .nx-burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--c) * 42);
+    height: calc(var(--c) * 30);
+    border-radius: 999px;
+    cursor: pointer;
+    border: var(--hairline) solid var(--hair);
+    background: rgba(255, 255, 255, 0.03);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(0.45);
+    backdrop-filter: blur(var(--blur)) saturate(0.45);
+    padding: 0;
+  }
+  .nx-burger svg {
+    width: calc(var(--c) * 19);
+    height: auto;
+    fill: none;
+    stroke: var(--nav);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+  }
+  .nx-burger svg path {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition:
+      transform 0.24s ease,
+      opacity 0.18s ease;
+  }
+  .nx-navtoggle:focus-visible ~ .nx-burger {
+    outline: 2px solid #9fe0ff;
+    outline-offset: 3px;
+  }
+  .nx-navtoggle:checked ~ .nx-burger .b1 {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nx-navtoggle:checked ~ .nx-burger .b2 {
+    opacity: 0;
+  }
+  .nx-navtoggle:checked ~ .nx-burger .b3 {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  .nx-scrim {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
+  .nx-navtoggle:checked ~ .nx-scrim {
+    display: block;
+  }
+
+  .nx-navpanel {
+    position: absolute;
+    top: calc(100% + calc(var(--c) * 12));
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--c) * 2);
+    width: min(calc(var(--c) * 268), 78vw);
+    padding: calc(var(--c) * 12);
+    border-radius: calc(var(--c) * 20);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.045) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 226, 178, 0.06) 0%,
+        rgba(150, 196, 244, 0.06) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(6, 12, 22, 0.6) 0%,
+        rgba(6, 12, 22, 0.7) 100%
+      );
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(0.45);
+    backdrop-filter: blur(var(--blur)) saturate(0.45);
+    box-shadow: 0 calc(var(--c) * 14) calc(var(--c) * 38) rgba(2, 6, 14, 0.45);
+    opacity: 0;
+    transform: translateY(calc(var(--c) * -8)) scale(0.985);
+    transform-origin: 100% 0;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .nx-navtoggle:checked ~ .nx-navpanel {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nx-navpanel .nx-menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .nx-navpanel .nx-menu a,
+  .nx-navpanel .nx-login {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--c) * 8);
+    padding: calc(var(--c) * 10) calc(var(--c) * 12);
+    border-radius: calc(var(--c) * 12);
+    font-size: calc(var(--c) * 16);
+    color: var(--nav);
+    transition: background 0.15s ease;
+  }
+  .nx-navpanel .nx-menu a:hover,
+  .nx-navpanel .nx-login:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .nx-navpanel .nx-caret,
+  .nx-navpanel .nx-navarrow {
+    margin-left: auto;
+    height: auto;
+    position: static;
+  }
+  .nx-navpanel .nx-caret {
+    width: calc(var(--c) * 10);
+  }
+  .nx-navpanel .nx-navarrow {
+    width: calc(var(--c) * 11);
+  }
+  .nx-navpanel .nx-pill {
+    margin-top: calc(var(--c) * 8);
+    text-align: center;
+    white-space: nowrap;
+    padding: calc(var(--c) * 11) calc(var(--c) * 16);
+    font-size: calc(var(--c) * 15);
+    position: static;
+    width: auto;
+    height: auto;
+    display: block;
+  }
+  .nx-navpanel .nx-contact {
+    position: static;
+    translate: none;
+    letter-spacing: normal;
+    text-align: center;
+  }
+
+  .nx-hero {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: auto;
+    order: 2;
+    flex: 1;
+    width: 100%;
+    height: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: calc(var(--c) * 20);
+    min-height: 0;
+  }
+
+  /* Flow canvas: bright centre sits under the copy — re-aim the veil (same job as phone canvas) */
+  .nx-veil {
+    background:
+      radial-gradient(
+        130% 50% at 50% 45%,
+        rgba(var(--veil), 0.42) 0%,
+        rgba(var(--veil), 0.2) 55%,
+        rgba(var(--veil), 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(var(--veil), 0.28) 0%,
+        rgba(var(--veil), 0) 18%,
+        rgba(var(--veil), 0) 62%,
+        rgba(var(--veil), 0.32) 100%
+      );
+  }
+  .nx-title {
+    position: static;
+    font-size: calc(var(--c) * 33);
+    line-height: 1.12;
+    max-width: 15ch;
+    margin: 0 auto;
+    font-weight: inherit;
+    inset: auto;
+  }
+  .nx-title span {
+    position: static;
+    line-height: inherit;
+    white-space: normal;
+    display: block;
+  }
+  .nx-sub {
+    position: static;
+    color: var(--sub);
+    font-size: calc(var(--c) * 17);
+    line-height: 1.32;
+    max-width: 26ch;
+    margin: 0 auto;
+    inset: auto;
+  }
+  .nx-sub span {
+    position: static;
+    line-height: inherit;
+    white-space: normal;
+    display: block;
+  }
+  .nx-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--c) * 12);
+    padding: calc(var(--c) * 16) calc(var(--c) * 26);
+    font-size: calc(var(--c) * 18);
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+  }
+  .nx-cta-label {
+    position: static;
+    translate: none;
+    letter-spacing: normal;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .nx-cta .nx-arrow {
+    position: static;
+    width: calc(var(--c) * 16);
+    height: calc(var(--c) * 11);
+  }
+  .nx-feats {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(var(--c) * 15) calc(var(--c) * 13);
+    width: 100%;
+    max-width: calc(var(--c) * 400);
+    margin-top: calc(var(--c) * 6);
+    inset: auto;
+  }
+  .nx-feats li {
+    position: static;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--c) * 9);
+    font-size: calc(var(--c) * 14);
+  }
+  .nx-feats li span {
+    position: static;
+    line-height: inherit;
+    white-space: normal;
+  }
+  .nx-feats .nx-chev {
+    position: static;
+    width: calc(var(--c) * 9);
+    height: calc(var(--c) * 16);
+    flex: none;
+  }
+  .nx-rule {
+    position: static;
+    width: 1px;
+    height: calc(var(--c) * 33);
+    margin: calc(var(--c) * 19) auto 0;
+    display: block;
+  }
+  .nx-foot {
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    order: 3;
+    width: 100%;
+    height: auto;
+    transform: none;
+    text-align: center;
+    color: var(--foot);
+    font-size: calc(var(--c) * 13);
+    line-height: 1.55;
+  }
+  .nx-foot span {
+    position: static;
+    display: block;
+    line-height: inherit;
+    white-space: normal;
+    translate: none;
+    letter-spacing: normal;
+  }
+}
+
+/* --- B1. PHONE CANVAS --- */
+@media (max-width: 599px), (max-height: 429px) {
+  .nx-stage {
+    --c: min(calc(100vw / 360), calc(100vh / 770), 1px);
+    --rise: 6px;
+    padding: calc(env(safe-area-inset-top) + calc(var(--c) * 28))
+      calc(var(--c) * 26)
+      calc(env(safe-area-inset-bottom) + calc(var(--c) * 26));
+  }
+  .nx-brand svg {
+    width: calc(var(--c) * 24);
+  }
+  .nx-word {
+    font-size: calc(var(--c) * 19);
+  }
+  .nx-burger {
+    width: calc(var(--c) * 46);
+    height: calc(var(--c) * 33);
+    position: relative;
+  }
+  .nx-burger::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max(44px, 100%);
+    height: max(44px, 100%);
+  }
+  .nx-burger svg {
+    width: calc(var(--c) * 21);
+  }
+  .nx-navpanel {
+    width: min(calc(var(--c) * 300), 82vw);
+    padding: calc(var(--c) * 15);
+    border-radius: calc(var(--c) * 22);
+  }
+  .nx-navpanel .nx-menu a,
+  .nx-navpanel .nx-login {
+    font-size: calc(var(--c) * 16);
+    padding: calc(var(--c) * 13) calc(var(--c) * 14);
+    border-radius: calc(var(--c) * 13);
+    min-height: max(44px, calc(var(--c) * 44));
+  }
+  .nx-navpanel .nx-pill {
+    font-size: calc(var(--c) * 16);
+    padding: calc(var(--c) * 13) calc(var(--c) * 18);
+    margin-top: calc(var(--c) * 9);
+  }
+
+  .nx-veil {
+    background:
+      radial-gradient(
+        130% 44% at 50% 45%,
+        rgba(var(--veil), 0.5) 0%,
+        rgba(var(--veil), 0.26) 55%,
+        rgba(var(--veil), 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(var(--veil), 0.34) 0%,
+        rgba(var(--veil), 0) 20%,
+        rgba(var(--veil), 0) 60%,
+        rgba(var(--veil), 0.36) 100%
+      );
+  }
+
+  .nx-hero {
+    gap: calc(var(--c) * 22);
+  }
+  .nx-title {
+    font-size: calc(var(--c) * 32);
+    line-height: 1.2;
+    letter-spacing: -0.002em;
+    max-width: none;
+    text-wrap: balance;
+  }
+  .nx-sub {
+    font-size: calc(var(--c) * 16);
+    line-height: 1.45;
+    max-width: none;
+    text-wrap: balance;
+  }
+  .nx-cta {
+    font-size: calc(var(--c) * 16.5);
+    padding: calc(var(--c) * 15) calc(var(--c) * 28);
+    gap: calc(var(--c) * 12);
+  }
+  .nx-cta .nx-arrow {
+    width: calc(var(--c) * 17);
+    height: calc(var(--c) * 12);
+  }
+  .nx-feats {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    width: auto;
+    max-width: none;
+    gap: calc(var(--c) * 16) calc(var(--c) * 16);
+    margin-top: calc(var(--c) * 22);
+  }
+  .nx-feats li {
+    font-size: calc(var(--c) * 13);
+    gap: calc(var(--c) * 10);
+  }
+  .nx-feats .nx-chev {
+    width: calc(var(--c) * 10);
+    height: calc(var(--c) * 18);
+  }
+  .nx-rule {
+    height: calc(var(--c) * 30);
+    margin: calc(var(--c) * 28) auto 0;
+  }
+  .nx-foot {
+    font-size: calc(var(--c) * 13.5);
+    line-height: 1.65;
+    text-wrap: balance;
+  }
+}
+
+/* --- LANDSCAPE PHONES --- */
+@media (max-height: 429px) and (min-aspect-ratio: 1/1) {
+  .nx-stage {
+    --c: min(calc(100vw / 760), calc(100vh / 430));
+  }
+  .nx-hero {
+    gap: calc(var(--c) * 12);
+  }
+  .nx-title {
+    font-size: calc(var(--c) * 31);
+    line-height: 1.2;
+    max-width: 26ch;
+  }
+  .nx-sub {
+    font-size: calc(var(--c) * 16);
+    max-width: 44ch;
+  }
+  .nx-sub span {
+    display: inline;
+  }
+  .nx-sub span + span::before {
+    content: " ";
+  }
+  .nx-cta {
+    font-size: calc(var(--c) * 15.5);
+    padding: calc(var(--c) * 12) calc(var(--c) * 24);
+  }
+  .nx-feats {
+    grid-template-columns: repeat(4, max-content);
+    justify-content: center;
+    max-width: none;
+    gap: calc(var(--c) * 24);
+    margin-top: calc(var(--c) * 2);
+  }
+  .nx-feats li {
+    font-size: calc(var(--c) * 13.5);
+  }
+  .nx-rule {
+    height: calc(var(--c) * 20);
+    margin: calc(var(--c) * 10) auto 0;
+  }
+  .nx-foot {
+    font-size: calc(var(--c) * 13);
+  }
+}
+
+/* --- B2. TABLET CANVAS --- */
+@media (min-width: 600px) and (min-height: 430px) {
+  .nx-stage {
+    --c: min(calc(100vw / 860), calc(100vh / 1120));
+    padding: calc(env(safe-area-inset-top) + calc(var(--c) * 40))
+      calc(var(--c) * 44)
+      calc(env(safe-area-inset-bottom) + calc(var(--c) * 36));
+  }
+  .nx-brand svg {
+    width: calc(var(--c) * 34);
+  }
+  .nx-word {
+    font-size: calc(var(--c) * 30);
+  }
+  .nx-burger {
+    width: calc(var(--c) * 60);
+    height: calc(var(--c) * 44);
+  }
+  .nx-burger svg {
+    width: calc(var(--c) * 27);
+    stroke-width: 1.2;
+  }
+  .nx-navpanel {
+    width: min(calc(var(--c) * 330), 56vw);
+    padding: calc(var(--c) * 16);
+    border-radius: calc(var(--c) * 26);
+    gap: calc(var(--c) * 4);
+  }
+  .nx-navpanel .nx-menu a,
+  .nx-navpanel .nx-login {
+    font-size: calc(var(--c) * 20);
+    padding: calc(var(--c) * 13) calc(var(--c) * 15);
+    border-radius: calc(var(--c) * 15);
+    gap: calc(var(--c) * 10);
+  }
+  .nx-navpanel .nx-caret {
+    width: calc(var(--c) * 13);
+  }
+  .nx-navpanel .nx-navarrow {
+    width: calc(var(--c) * 14);
+  }
+  .nx-navpanel .nx-pill {
+    margin-top: calc(var(--c) * 10);
+    padding: calc(var(--c) * 14) calc(var(--c) * 20);
+    font-size: calc(var(--c) * 19);
+  }
+  .nx-hero {
+    gap: calc(var(--c) * 26);
+  }
+  .nx-title {
+    font-size: calc(var(--c) * 46);
+    line-height: 1.15;
+    max-width: none;
+  }
+  .nx-sub {
+    font-size: calc(var(--c) * 21);
+    line-height: 1.34;
+    max-width: none;
+  }
+  .nx-cta {
+    gap: calc(var(--c) * 14);
+    padding: calc(var(--c) * 18) calc(var(--c) * 34);
+    font-size: calc(var(--c) * 21);
+  }
+  .nx-cta .nx-arrow {
+    width: calc(var(--c) * 20);
+    height: calc(var(--c) * 14);
+  }
+  .nx-feats {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    gap: calc(var(--c) * 22) calc(var(--c) * 54);
+    max-width: none;
+    margin-top: calc(var(--c) * 12);
+  }
+  .nx-feats li {
+    gap: calc(var(--c) * 12);
+    font-size: calc(var(--c) * 16);
+  }
+  .nx-feats .nx-chev {
+    width: calc(var(--c) * 12);
+    height: calc(var(--c) * 21);
+  }
+  .nx-rule {
+    height: calc(var(--c) * 46);
+    margin: calc(var(--c) * 30) auto 0;
+  }
+  .nx-foot {
+    font-size: calc(var(--c) * 16);
+  }
+}
+
+@media (min-width: 600px) and (min-height: 430px) and (min-aspect-ratio: 1/1) {
+  .nx-stage {
+    --c: min(calc(100vw / 1040), calc(100vh / 780));
+  }
+  .nx-feats {
+    grid-template-columns: repeat(4, max-content);
+    gap: calc(var(--c) * 40);
+  }
+}
+
+/* ============================================================
+   9. DYNAMIC VIEWPORT OVERRIDE — mobile browser chrome
+   ============================================================ */
+@supports (height: 100dvh) {
+  @media (max-width: 1199px), (max-height: 559px), (max-aspect-ratio: 100/95) {
+    .nx-stage {
+      --c: min(calc(100vw / 430), calc(100dvh / 860));
+      height: 100dvh;
+    }
+    @media (max-width: 599px), (max-height: 429px) {
+      .nx-stage {
+        --c: min(calc(100vw / 360), calc(100dvh / 770), 1px);
+      }
+    }
+    @media (max-height: 429px) and (min-aspect-ratio: 1/1) {
+      .nx-stage {
+        --c: min(calc(100vw / 760), calc(100dvh / 430));
+      }
+    }
+    @media (min-width: 600px) and (min-height: 430px) {
+      .nx-stage {
+        --c: min(calc(100vw / 860), calc(100dvh / 1120));
+      }
+      @media (min-aspect-ratio: 1/1) {
+        .nx-stage {
+          --c: min(calc(100vw / 1040), calc(100dvh / 780));
+        }
+      }
+    }
+  }
+}
+
+/* ============================================================
+   10. REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .nx-stage *,
+  .nx-stage {
+    animation: none !important;
+    transition: none !important;
+  }
+}

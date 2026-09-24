@@ -1,7 +1,6 @@
 "use client";
 
-import Navbar from "@/components/landing/Navbar";
-import Hero from "@/components/landing/Hero";
+import NeuralHero from "@/components/landing/NeuralHero";
 import CinematicText from "@/components/landing/CinematicText";
 import Metrics from "@/components/landing/Metrics";
 import Technology from "@/components/landing/Technology";
@@ -10,12 +9,17 @@ import Footer from "@/components/landing/Footer";
 
 export default function HomePage() {
   return (
-    <div style={{ fontFamily: '"Space Mono", monospace' }}>
-      <Navbar />
-      <Hero />
-      <CinematicText />
-      <Metrics />
-      <Technology />
+    <div className="landing-dark">
+      <NeuralHero />
+      <div id="how-it-works">
+        <CinematicText />
+      </div>
+      <div id="stats">
+        <Metrics />
+      </div>
+      <div id="features">
+        <Technology />
+      </div>
       <Architecture />
       <Footer />
     </div>
